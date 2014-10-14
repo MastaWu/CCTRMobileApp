@@ -7,9 +7,10 @@
     <string name="cctr_ct">Clinical Trials</string>
     <string name="cctr_news">CCTR News</string>
     <string name="title_activity_cctr_clinical_trials">cctr_clinical_trials</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="cctr_ct_home">Clinical Trials Home</string>
+    <string name="cctr_ct_search">Search</string>
+    <string name="cctr_ct_saved">Saved</string>
+    <string name="cctr_ct_recent">Recent</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>

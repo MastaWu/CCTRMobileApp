@@ -1,17 +1,41 @@
 package com.example.workstation.cctrmobileapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class cctrhomepage extends ActionBarActivity {
+
+    Button cctr_news;
+    Button cctr_ct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cctrhomepage);
+
+        //Locate buttons in activity_cctrhomepage.xml
+        cctr_news = (Button)findViewById(R.id.cctr_news);
+        cctr_ct = (Button)findViewById(R.id.cctr_ct);
+
+        //Capture button click for cctr_ct to open cctr_ct homepage
+        cctr_ct.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent openCCTR_CT = new Intent(cctrhomepage.this, cctr_clinical_trials.class);
+
+                startActivity(openCCTR_CT);
+
+            }
+        });
+
+
     }
 
 

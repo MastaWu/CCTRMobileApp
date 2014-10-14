@@ -20,7 +20,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/search"
+        android:id="@+id/cctr_search"
         android:drawableTop="@drawable/search"
         android:layout_below="@+id/cctr_ct_home"
         android:layout_alignLeft="@+id/cctr_ct_home"
@@ -31,9 +31,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/favorites"
+        android:id="@+id/cctr_favorites"
         android:drawableTop="@drawable/favorites"
-        android:layout_alignTop="@+id/search"
+        android:layout_alignTop="@+id/cctr_search"
         android:layout_alignRight="@+id/cctr_ct_home"
         android:layout_alignEnd="@+id/cctr_ct_home"
         android:text="Favorite"/>
@@ -41,22 +41,22 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/recent"
+        android:id="@+id/cctr_recent"
         android:drawableTop="@drawable/recent"
-        android:layout_below="@+id/search"
-        android:layout_alignLeft="@+id/search"
-        android:layout_alignStart="@+id/search"
+        android:layout_below="@+id/cctr_search"
+        android:layout_alignLeft="@+id/cctr_search"
+        android:layout_alignStart="@+id/cctr_search"
         android:layout_marginTop="37dp"
         android:text="Recent"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/contactus"
+        android:id="@+id/cctr_contactus"
         android:drawableTop="@drawable/email"
-        android:layout_alignTop="@+id/recent"
-        android:layout_alignLeft="@+id/favorites"
-        android:layout_alignStart="@+id/favorites"
+        android:layout_alignTop="@+id/cctr_recent"
+        android:layout_alignLeft="@+id/cctr_favorites"
+        android:layout_alignStart="@+id/cctr_favorites"
         android:text="Contact Us" />
 
 </RelativeLayout>

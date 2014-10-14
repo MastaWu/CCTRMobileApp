@@ -1,6 +1,7 @@
 package com.example.workstation.cctrmobileapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -32,6 +34,8 @@ public class cctr_clinical_trials extends ActionBarActivity
      */
     private CharSequence mTitle;
 
+    Button cctrct_searchButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,20 @@ public class cctr_clinical_trials extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        cctrct_searchButton = (Button)findViewById(R.id.cctr_search);
+
+        cctrct_searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            
+
+            }
+
+        });
+
+
     }
 
     @Override

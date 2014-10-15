@@ -52,10 +52,23 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        cctrct_searchButton = (Button)findViewById(R.id.cctr_search);
+/*          cctrct_searchButton = (Button)findViewById(R.id.cctr_search);
 
+        cctrct_searchButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-/*        cctrct_searchButton.setOnClickListener(new View.OnClickListener() {
+                Fragment newFragment = new cctrct_search();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.container, newFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
+            }
+        });
+
+      cctrct_searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -81,15 +94,11 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
         switch (position) {
             case 0: fragmentManager.beginTransaction()
                     .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                    .addToBackStack(null)
                     .commit(); break;
             case 1: fragmentManager.beginTransaction()
                     .replace(R.id.container, cctrct_search.newInstance("test1", "test2"))
-                    .commit(); break;
-            case 2: fragmentManager.beginTransaction()
-                    .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                    .commit(); break;
-            case 3: fragmentManager.beginTransaction()
-                    .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                    .addToBackStack(null)
                     .commit(); break;
         }
 
@@ -106,9 +115,7 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
             case 3:
                 mTitle = getString(R.string.cctr_ct_saved);
                 break;
-            case 4:
-                mTitle = getString(R.string.cctr_ct_recent);
-                break;
+
         }
     }
 
@@ -179,7 +186,28 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_cctr_clinical_trials, container, false);
+
+
+            Button cctrct_searchButton;
+
+            cctrct_searchButton = (Button)rootView.findViewById(R.id.cctr_search);
+
+            cctrct_searchButton.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Fragment newFragment = new cctrct_search();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                    transaction.replace(R.id.container, newFragment);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+                }
+            });
+
             return rootView;
+
         }
 
         @Override

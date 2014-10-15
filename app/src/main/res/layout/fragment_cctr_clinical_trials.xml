@@ -54,16 +54,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/cctr_contactus"
         android:drawableTop="@drawable/email"
+        android:text="Contact Us"
         android:layout_alignTop="@+id/cctr_recent"
-        android:layout_alignLeft="@+id/cctr_favorites"
-        android:layout_alignStart="@+id/cctr_favorites"
-        android:text="Contact Us" />
+        android:layout_alignRight="@+id/cctr_ct_home"
+        android:layout_alignEnd="@+id/cctr_ct_home" />
 
-    <fragment android:name="com.example.workstation.cctrmobileapp.cctrct_search"
-        android:id="@+id/cctr_ct_search"
-        android:layout_weight="2"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        tools:layout="@layout/fragment_cctrct_search" />
+
 
 </RelativeLayout>

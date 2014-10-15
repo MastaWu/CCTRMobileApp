@@ -1,7 +1,10 @@
 package com.example.workstation.cctrmobileapp;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -21,8 +24,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class cctr_clinical_trials extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, cctrct_search.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -52,15 +54,21 @@ public class cctr_clinical_trials extends ActionBarActivity
 
         cctrct_searchButton = (Button)findViewById(R.id.cctr_search);
 
-        cctrct_searchButton.setOnClickListener(new View.OnClickListener() {
+
+/*        cctrct_searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-            
+                FragmentManager searchFragment = getSupportFragmentManager();
 
+                searchFragment.beginTransaction()
+
+                        .replace(R.id.container, cctrct_search.newInstance("test1", "test2"))
+
+                        .commit();
             }
 
-        });
+        });*/
 
 
     }
@@ -75,7 +83,7 @@ public class cctr_clinical_trials extends ActionBarActivity
                     .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                     .commit(); break;
             case 1: fragmentManager.beginTransaction()
-                    .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                    .replace(R.id.container, cctrct_search.newInstance("test1", "test2"))
                     .commit(); break;
             case 2: fragmentManager.beginTransaction()
                     .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
@@ -137,6 +145,11 @@ public class cctr_clinical_trials extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -175,6 +188,9 @@ public class cctr_clinical_trials extends ActionBarActivity
             ((cctr_clinical_trials) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
+
+
+
     }
 
 }

@@ -1,0 +1,102 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.workstation.cctrmobileapp.cctrct_search">
+
+    <!-- TODO: Update blank fragment layout -->
+
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/cctrct_search_submit"
+        android:layout_below="@+id/cctrct_p1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Only the submit button works"
+        android:id="@+id/cctr_search_logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:layout_gravity="center_horizontal|top" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phase III"
+        android:id="@+id/cctrct_p3"
+        android:layout_toEndOf="@+id/cctrct_search_dsite"
+        android:layout_below="@+id/cctrct_search_pnum"
+        android:layout_toRightOf="@+id/cctrct_search_dsite"
+        android:layout_marginTop="28dp"
+        android:layout_gravity="center" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phase II"
+        android:id="@+id/cctrct_p2"
+        android:layout_alignTop="@+id/cctrct_p3"
+        android:layout_alignLeft="@+id/cctrct_search_keyword"
+        android:layout_alignStart="@+id/cctrct_search_keyword"
+        android:layout_alignRight="@+id/cctrct_search_dsite"
+        android:layout_alignEnd="@+id/cctrct_search_dsite"
+        android:layout_gravity="center" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phase I"
+        android:id="@+id/cctrct_p1"
+        android:layout_toStartOf="@+id/cctrct_search_pnum"
+        android:layout_alignTop="@+id/cctrct_p2"
+        android:layout_toLeftOf="@+id/cctrct_search_pnum"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Keyword"
+        android:id="@+id/cctrct_search_keyword"
+        android:layout_below="@+id/cctrct_search_dsite"
+        android:layout_alignRight="@+id/cctrct_search_submit"
+        android:layout_alignEnd="@+id/cctrct_search_submit"
+        android:layout_marginTop="26dp"
+        android:layout_gravity="left|center_vertical" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Disease Site"
+        android:id="@+id/cctrct_search_dsite"
+        android:layout_below="@+id/cctr_search_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:layout_gravity="right|center_vertical" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Protocol Number"
+        android:id="@+id/cctrct_search_pnum"
+        android:layout_below="@+id/cctrct_search_keyword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:layout_gravity="left|center_vertical" />
+
+</RelativeLayout>
+
+</FrameLayout>

@@ -24,7 +24,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, cctrct_search.OnFragmentInteractionListener {
+public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, cctrct_search.OnFragmentInteractionListener, cctrct_search_results.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -196,10 +196,10 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                 @Override
                 public void onClick(View view) {
 
-                    Fragment newFragment = new cctrct_search();
+                    Fragment cctrct_search = new cctrct_search();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
-                    transaction.replace(R.id.container, newFragment);
+                    transaction.replace(R.id.container, cctrct_search);
                     transaction.addToBackStack(null);
 
                     transaction.commit();

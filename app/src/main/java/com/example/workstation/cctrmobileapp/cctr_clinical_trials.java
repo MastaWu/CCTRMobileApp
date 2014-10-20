@@ -52,38 +52,15 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-/*          cctrct_searchButton = (Button)findViewById(R.id.cctr_search);
+        setFragment(PlaceholderFragment.newInstance(0));
 
-        cctrct_searchButton.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
 
-                Fragment newFragment = new cctrct_search();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-                transaction.replace(R.id.container, newFragment);
-                transaction.addToBackStack(null);
-
-                transaction.commit();
-            }
-        });
-
-      cctrct_searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                FragmentManager searchFragment = getSupportFragmentManager();
-
-                searchFragment.beginTransaction()
-
-                        .replace(R.id.container, cctrct_search.newInstance("test1", "test2"))
-
-                        .commit();
-            }
-
-        });*/
-
-
+    public void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
     }
 
     @Override

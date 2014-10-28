@@ -29,8 +29,6 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
      */
     private CharSequence mTitle;
 
-    Button cctrct_searchButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,7 +176,19 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
 
             Button cctrct_searchButton;
 
+            Button cctrct_favoriteButton;
+
+            Button cctrct_recentButton;
+
+            Button cctrct_contactUsButton;
+
             cctrct_searchButton = (Button)rootView.findViewById(R.id.cctr_search);
+
+            cctrct_favoriteButton = (Button) rootView.findViewById(R.id.cctr_favorites);
+
+            cctrct_recentButton = (Button) rootView.findViewById(R.id.cctr_recent);
+
+            cctrct_contactUsButton = (Button) rootView.findViewById(R.id.cctr_contactus);
 
             cctrct_searchButton.setOnClickListener( new View.OnClickListener() {
                 @Override
@@ -188,6 +198,48 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
                     transaction.replace(R.id.container, cctrct_search);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+                }
+            });
+
+            cctrct_favoriteButton.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Fragment cctrct_favorite = new cctrct_favorites();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                    transaction.replace(R.id.container, cctrct_favorite);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+                }
+            });
+
+            cctrct_recentButton.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Fragment cctrct_recent = new cctrct_recent();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                    transaction.replace(R.id.container, cctrct_recent);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+                }
+            });
+
+            cctrct_contactUsButton.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Fragment cctrct_contactUs = new cctrct_contactus();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                    transaction.replace(R.id.container, cctrct_contactUs);
                     transaction.addToBackStack(null);
 
                     transaction.commit();

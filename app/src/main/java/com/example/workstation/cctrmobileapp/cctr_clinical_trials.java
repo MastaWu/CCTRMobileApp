@@ -1,6 +1,10 @@
 package com.example.workstation.cctrmobileapp;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentTransaction;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -16,11 +20,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 
-public class cctr_clinical_trials extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, cctrct_search.OnFragmentInteractionListener, cctrct_search_results.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -31,6 +35,8 @@ public class cctr_clinical_trials extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+
+    Button cctrct_searchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,28 +51,48 @@ public class cctr_clinical_trials extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        setFragment(PlaceholderFragment.newInstance(0));
+
+    }
+
+    public void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
     }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+
+        switch (position) {
+            case 0: fragmentManager.beginTransaction()
+                    .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                    .addToBackStack(null)
+                    .commit(); break;
+            case 1: fragmentManager.beginTransaction()
+                    .replace(R.id.container, cctrct_search.newInstance("test1", "test2"))
+                    .addToBackStack(null)
+                    .commit(); break;
+        }
+
     }
 
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = getString(R.string.cctr_ct_home);
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                mTitle = getString(R.string.cctr_ct_search);
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                mTitle = getString(R.string.cctr_ct_saved);
                 break;
+
         }
     }
 
@@ -103,6 +129,11 @@ public class cctr_clinical_trials extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -132,7 +163,28 @@ public class cctr_clinical_trials extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_cctr_clinical_trials, container, false);
+
+
+            Button cctrct_searchButton;
+
+            cctrct_searchButton = (Button)rootView.findViewById(R.id.cctr_search);
+
+            cctrct_searchButton.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Fragment cctrct_search = new cctrct_search();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                    transaction.replace(R.id.container, cctrct_search);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+                }
+            });
+
             return rootView;
+
         }
 
         @Override
@@ -141,6 +193,9 @@ public class cctr_clinical_trials extends ActionBarActivity
             ((cctr_clinical_trials) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
+
+
+
     }
 
 }

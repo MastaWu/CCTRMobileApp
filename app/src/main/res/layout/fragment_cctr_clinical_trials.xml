@@ -9,8 +9,56 @@
     tools:context="com.example.workstation.cctrmobileapp.cctr_clinical_trials$PlaceholderFragment">
 
     <TextView
-        android:id="@+id/section_label"
+        android:id="@+id/cctr_ct_home"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/cctr_ct"
+        android:textSize="40sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cctr_search"
+        android:drawableTop="@drawable/search"
+        android:layout_below="@+id/cctr_ct_home"
+        android:layout_alignLeft="@+id/cctr_ct_home"
+        android:layout_alignStart="@+id/cctr_ct_home"
+        android:layout_marginTop="95dp"
+        android:text="Search"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cctr_favorites"
+        android:drawableTop="@drawable/favorites"
+        android:layout_alignTop="@+id/cctr_search"
+        android:layout_alignRight="@+id/cctr_ct_home"
+        android:layout_alignEnd="@+id/cctr_ct_home"
+        android:text="Favorite"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cctr_recent"
+        android:drawableTop="@drawable/recent"
+        android:layout_below="@+id/cctr_search"
+        android:layout_alignLeft="@+id/cctr_search"
+        android:layout_alignStart="@+id/cctr_search"
+        android:layout_marginTop="37dp"
+        android:text="Recent"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cctr_contactus"
+        android:drawableTop="@drawable/email"
+        android:text="Contact Us"
+        android:layout_alignTop="@+id/cctr_recent"
+        android:layout_alignRight="@+id/cctr_ct_home"
+        android:layout_alignEnd="@+id/cctr_ct_home" />
+
+
 
 </RelativeLayout>

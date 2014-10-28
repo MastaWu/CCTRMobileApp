@@ -94,7 +94,6 @@ public class MainActivity extends ActionBarActivity {
             }
             try {
                 InputStream inputStream = is;
-//                GZIPInputStream input = new GZIPInputStream(inputStream);
                 InputStreamReader reader = new InputStreamReader(inputStream);
                 BufferedReader in = new BufferedReader(reader);
                 StringBuilder sb = new StringBuilder();
@@ -121,12 +120,12 @@ public class MainActivity extends ActionBarActivity {
                     String status = p.getString(TAG_STATUS);
                     String name = p.getString(TAG_NAME);
 
-                    items.add(id);
-                    items.add(protocolNo);
-                    items.add(title);
-                    items.add(shortTitle);
-                    items.add(status);
-                    items.add(name);
+                    items.add("ID: " + id);
+                    items.add("Protocol Number: " + protocolNo);
+                    items.add("Title: " + title);
+                    items.add("Short Title: " + shortTitle);
+                    items.add("Status: " + status);
+                    items.add("Name: " + name);
                 }
 
             } catch (JSONException e) {
@@ -138,28 +137,12 @@ public class MainActivity extends ActionBarActivity {
         @SuppressWarnings({"unchecked", "rawtypes"})
         protected void onPostExecute(JSONObject json) {
             ListView myListView = (ListView) findViewById(R.id.list);
-            //TextView jsonData = (TextView) findViewById(R.id.jsonParsedData);
             myListView.setAdapter(new ArrayAdapter(MainActivity.this, R.layout.custom_textview, items));
 
-/*            int arraylistsSize = items.size();
-            for(int i = 0; i < arraylistsSize; i++){
 
-                jsonData.setText(items.get(i));
-
-            }*/
 
         }
 
-
-        /*public View getView(int position, View convertView, ViewGroup parent) {
-            View view = getView(position, convertView, parent);
-            TextView text = (TextView) view.findViewById(android.R.id.text1);
-            if(flag == true){
-                text.setTextColor(Color.BLACK);
-            }
-            return view;
-        }
-*/
     }
 
 }

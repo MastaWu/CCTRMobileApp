@@ -9,8 +9,9 @@
     <string name="title_activity_cctr_clinical_trials">cctr_clinical_trials</string>
     <string name="cctr_ct_home">Clinical Trials Home</string>
     <string name="cctr_ct_search">Search</string>
-    <string name="cctr_ct_saved">Saved</string>
+    <string name="cctr_ct_favorite">Favorites</string>
     <string name="cctr_ct_recent">Recent</string>
+    <string name="cctr_ct_contactus">Contact Us</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>

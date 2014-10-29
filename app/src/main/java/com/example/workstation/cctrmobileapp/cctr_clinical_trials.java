@@ -1,30 +1,23 @@
 package com.example.workstation.cctrmobileapp;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentTransaction;
-import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
 
 
-public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, cctrct_search.OnFragmentInteractionListener, cctrct_search_results.OnFragmentInteractionListener {
+public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, cctrct_search.OnFragmentInteractionListener, cctrct_search_results.OnFragmentInteractionListener,cctrct_favorites.OnFragmentInteractionListener, cctrct_contactus.OnFragmentInteractionListener, cctrct_recent.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -35,8 +28,6 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
-
-    Button cctrct_searchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +68,18 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                     .replace(R.id.container, cctrct_search.newInstance("test1", "test2"))
                     .addToBackStack(null)
                     .commit(); break;
+            case 2: fragmentManager.beginTransaction()
+                    .replace(R.id.container, cctrct_recent.newInstance("test1", "test2"))
+                    .addToBackStack(null)
+                    .commit(); break;
+            case 3: fragmentManager.beginTransaction()
+                    .replace(R.id.container, cctrct_favorites.newInstance("test1", "test2"))
+                    .addToBackStack(null)
+                    .commit(); break;
+            case 4: fragmentManager.beginTransaction()
+                    .replace(R.id.container, cctrct_contactus.newInstance("test1", "test2"))
+                    .addToBackStack(null)
+                    .commit(); break;
         }
 
     }
@@ -90,7 +93,13 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                 mTitle = getString(R.string.cctr_ct_search);
                 break;
             case 3:
-                mTitle = getString(R.string.cctr_ct_saved);
+                mTitle = getString(R.string.cctr_ct_recent);
+                break;
+            case 4:
+                mTitle = getString(R.string.cctr_ct_favorite);
+                break;
+            case 5:
+                mTitle = getString(R.string.cctr_ct_contactus);
                 break;
 
         }
@@ -167,7 +176,19 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
 
             Button cctrct_searchButton;
 
+            Button cctrct_favoriteButton;
+
+            Button cctrct_recentButton;
+
+            Button cctrct_contactUsButton;
+
             cctrct_searchButton = (Button)rootView.findViewById(R.id.cctr_search);
+
+            cctrct_favoriteButton = (Button) rootView.findViewById(R.id.cctr_favorites);
+
+            cctrct_recentButton = (Button) rootView.findViewById(R.id.cctr_recent);
+
+            cctrct_contactUsButton = (Button) rootView.findViewById(R.id.cctr_contactus);
 
             cctrct_searchButton.setOnClickListener( new View.OnClickListener() {
                 @Override
@@ -177,6 +198,48 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
                     transaction.replace(R.id.container, cctrct_search);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+                }
+            });
+
+            cctrct_favoriteButton.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Fragment cctrct_favorite = new cctrct_favorites();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                    transaction.replace(R.id.container, cctrct_favorite);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+                }
+            });
+
+            cctrct_recentButton.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Fragment cctrct_recent = new cctrct_recent();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                    transaction.replace(R.id.container, cctrct_recent);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+                }
+            });
+
+            cctrct_contactUsButton.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Fragment cctrct_contactUs = new cctrct_contactus();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                    transaction.replace(R.id.container, cctrct_contactUs);
                     transaction.addToBackStack(null);
 
                     transaction.commit();

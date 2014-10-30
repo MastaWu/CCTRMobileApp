@@ -120,12 +120,12 @@ public class MainActivity extends ActionBarActivity {
                     String status = p.getString(TAG_STATUS);
                     String name = p.getString(TAG_NAME);
 
-                    items.add("ID: " + id);
-                    items.add("Protocol Number: " + protocolNo);
+                    items.add("ID: " + id + "\nProtocol Number: " + protocolNo + "\nTitle: " + title + "\nShort Title: " + shortTitle + "\nStatus: " + status + "\nName: " + name);
+/*                    items.add("Protocol Number: " + protocolNo);
                     items.add("Title: " + title);
                     items.add("Short Title: " + shortTitle);
                     items.add("Status: " + status);
-                    items.add("Name: " + name);
+                    items.add("Name: " + name);*/
                 }
 
             } catch (JSONException e) {

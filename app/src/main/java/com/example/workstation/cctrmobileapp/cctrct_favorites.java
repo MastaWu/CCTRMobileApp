@@ -13,13 +13,13 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Favorites.OnFragmentInteractionListener} interface
+ * {@link cctrct_favorites.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Favorites#newInstance} factory method to
+ * Use the {@link cctrct_favorites#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class Favorites extends Fragment {
+public class cctrct_favorites extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,18 +37,18 @@ public class Favorites extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Favorites.
+     * @return A new instance of fragment cctrct_favorites.
      */
     // TODO: Rename and change types and number of parameters
-    public static Favorites newInstance(String param1, String param2) {
-        Favorites fragment = new Favorites();
+    public static cctrct_favorites newInstance(String param1, String param2) {
+        cctrct_favorites fragment = new cctrct_favorites();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-    public Favorites() {
+    public cctrct_favorites() {
         // Required empty public constructor
     }
 

@@ -137,9 +137,10 @@ public class MainActivity extends ActionBarActivity {
         @SuppressWarnings({"unchecked", "rawtypes"})
         protected void onPostExecute(JSONObject json) {
             ListView myListView = (ListView) findViewById(R.id.list);
+            myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
             myListView.setAdapter(new ArrayAdapter(MainActivity.this, R.layout.custom_textview, items));
-
-
+//            myListView.setSelection(0);
+//            myListView.setItemChecked(0, true);
 
         }
 

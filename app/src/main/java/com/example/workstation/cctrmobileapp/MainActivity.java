@@ -120,12 +120,12 @@ public class MainActivity extends ActionBarActivity {
                     String status = p.getString(TAG_STATUS);
                     String name = p.getString(TAG_NAME);
 
-                    items.add("ID: " + id);
-                    items.add("Protocol Number: " + protocolNo);
+                    items.add("ID: " + id + "\nProtocol Number: " + protocolNo + "\nTitle: " + title + "\nShort Title: " + shortTitle + "\nStatus: " + status + "\nName: " + name);
+/*                    items.add("Protocol Number: " + protocolNo);
                     items.add("Title: " + title);
                     items.add("Short Title: " + shortTitle);
                     items.add("Status: " + status);
-                    items.add("Name: " + name);
+                    items.add("Name: " + name);*/
                 }
 
             } catch (JSONException e) {
@@ -137,9 +137,10 @@ public class MainActivity extends ActionBarActivity {
         @SuppressWarnings({"unchecked", "rawtypes"})
         protected void onPostExecute(JSONObject json) {
             ListView myListView = (ListView) findViewById(R.id.list);
+            myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
             myListView.setAdapter(new ArrayAdapter(MainActivity.this, R.layout.custom_textview, items));
-
-
+//            myListView.setSelection(0);
+//            myListView.setItemChecked(0, true);
 
         }
 

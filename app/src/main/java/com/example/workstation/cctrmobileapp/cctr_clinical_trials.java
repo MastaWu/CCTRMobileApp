@@ -69,11 +69,11 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                     .addToBackStack(null)
                     .commit(); break;
             case 2: fragmentManager.beginTransaction()
-                    .replace(R.id.container, cctrct_recent.newInstance("test1", "test2"))
+                    .replace(R.id.container, cctrct_favorites.newInstance("test1", "test2"))
                     .addToBackStack(null)
                     .commit(); break;
             case 3: fragmentManager.beginTransaction()
-                    .replace(R.id.container, cctrct_favorites.newInstance("test1", "test2"))
+                    .replace(R.id.container, cctrct_recent.newInstance("test1", "test2"))
                     .addToBackStack(null)
                     .commit(); break;
             case 4: fragmentManager.beginTransaction()
@@ -93,10 +93,10 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                 mTitle = getString(R.string.cctr_ct_search);
                 break;
             case 3:
-                mTitle = getString(R.string.cctr_ct_recent);
+                mTitle = getString(R.string.cctr_ct_favorite);
                 break;
             case 4:
-                mTitle = getString(R.string.cctr_ct_favorite);
+                mTitle = getString(R.string.cctr_ct_recent);
                 break;
             case 5:
                 mTitle = getString(R.string.cctr_ct_contactus);

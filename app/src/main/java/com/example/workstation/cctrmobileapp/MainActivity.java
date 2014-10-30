@@ -1,7 +1,9 @@
 package com.example.workstation.cctrmobileapp;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,9 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -33,6 +37,7 @@ import java.util.zip.GZIPInputStream;
 public class MainActivity extends ActionBarActivity {
 
     ArrayList<String> items = new ArrayList<String>();
+    ArrayList<String> sharedData = new ArrayList<String>();
     static InputStream is = null;
     private static String url = "https://mobile-api.forteresearch.com/protocols";
     JSONArray people = null;
@@ -51,6 +56,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new MyTasks().execute();
+
     }
 
 
@@ -71,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         if (id == R.id.menu_favorite){
-            
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -138,12 +144,47 @@ public class MainActivity extends ActionBarActivity {
         }
 
         @SuppressWarnings({"unchecked", "rawtypes"})
-        protected void onPostExecute(JSONObject json) {
-            ListView myListView = (ListView) findViewById(R.id.list);
+        public void onPostExecute(JSONObject json) {
+            final ListView myListView = (ListView) findViewById(R.id.list);
             myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
             myListView.setAdapter(new ArrayAdapter(MainActivity.this, R.layout.custom_textview, items));
-//            myListView.setSelection(0);
-//            myListView.setItemChecked(0, true);
+            LoadPreferences();
+
+            myListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    String itemAtPosition = (String) myListView.getItemAtPosition(i);
+
+                    SavePreferences("jsonData", itemAtPosition);
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+        }
+
+
+
+        protected void SavePreferences(String key, String value) {
+
+            SharedPreferences jsonData = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+            SharedPreferences.Editor editor = jsonData.edit();
+            editor.putString(key, value);
+            editor.commit();
+
+        }
+
+        protected void LoadPreferences(){
+
+            SharedPreferences loadData = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+            String dataSet = loadData.getString("jsonData", "none available");
+
+            items.add(dataSet);
 
         }
 

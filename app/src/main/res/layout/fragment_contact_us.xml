@@ -15,18 +15,55 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/cctr_ct_contactus"
             android:id="@+id/textView"
+            android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="143dp" />
+            android:layout_marginTop="35dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="If you need anything \ncontact David Fenstermacher"
+            android:text="David Fenstermacher, Ph.D."
             android:id="@+id/textView2"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="35dp"
             android:layout_below="@+id/textView"
             android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Chief research information officer - Biomedical Informatics Core \nPhone: (804) 828-8583 \nEmail: dfenster@vcu.edu"
+            android:id="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textView2"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Center for Clinical and Translational Research"
+            android:textStyle="bold"
+            android:id="@+id/textView4"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textView3"
+            android:gravity="center"
+            android:layout_marginTop="35dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="1200 East Clay Street \nP.O. Box 980261 \nRichmond, Virginia 23298-0261 \nPhone: (804) 827-0472"
+            android:id="@+id/textView5"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textView4"
+            android:gravity="center"/>
+
     </RelativeLayout>
 
 </FrameLayout>

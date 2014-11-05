@@ -69,11 +69,7 @@ public class cctrct_search_results extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        JSONParser jParser = new JSONParser();
-
         View searchResultView = inflater.inflate(R.layout.fragment_cctrct_search_results, container, false);
-
-        JSONObject json = jParser.getJSONFromUrl("https://mobile-api.forteresearch.com/protocols");
 
         return searchResultView;
     }

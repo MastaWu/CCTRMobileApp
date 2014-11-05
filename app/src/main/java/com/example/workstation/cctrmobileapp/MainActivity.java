@@ -37,10 +37,8 @@ import java.util.zip.GZIPInputStream;
 public class MainActivity extends ActionBarActivity {
 
     ArrayList<String> items = new ArrayList<String>();
-    ArrayList<String> sharedData = new ArrayList<String>();
     static InputStream is = null;
     private static String url = "https://mobile-api.forteresearch.com/protocols";
-    JSONArray people = null;
     private static final String TAG_ID = "id";
     private static final String TAG_PROTOCOL = "protocolNo";
     private static final String TAG_TITLE = "title";
@@ -49,12 +47,15 @@ public class MainActivity extends ActionBarActivity {
     private static final String TAG_NAME = "name";
     static JSONObject jObj = null;
     static String json = "";
-    boolean flag = true;
+    sqliteDatabase database;
+    ArrayList arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        database = new sqliteDatabase(this);
+        database.getWritableDatabase();
         new MyTasks().execute();
 
     }
@@ -129,6 +130,8 @@ public class MainActivity extends ActionBarActivity {
                     String status = p.getString(TAG_STATUS);
                     String name = p.getString(TAG_NAME);
 
+                    database.insertData(id, protocolNo, title, shortTitle, status, name);
+
                     items.add("ID: " + id + "\nProtocol Number: " + protocolNo + "\nTitle: " + title + "\nShort Title: " + shortTitle + "\nStatus: " + status + "\nName: " + name);
 /*                    items.add("Protocol Number: " + protocolNo);
                     items.add("Title: " + title);
@@ -145,46 +148,26 @@ public class MainActivity extends ActionBarActivity {
 
         @SuppressWarnings({"unchecked", "rawtypes"})
         public void onPostExecute(JSONObject json) {
-            final ListView myListView = (ListView) findViewById(R.id.list);
-            myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-            myListView.setAdapter(new ArrayAdapter(MainActivity.this, R.layout.custom_textview, items));
-            LoadPreferences();
 
-            myListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            final ListView myListView = (ListView) findViewById(R.id.list);
+
+            arrayList = database.fetchData();
+            myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+            ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, R.layout.custom_textview, arrayList);
+            myListView.setAdapter(adapter);
+
+
+            /* myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+            myListView.setAdapter(new ArrayAdapter(MainActivity.this, R.layout.custom_textview, items));
+
+            myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                     String itemAtPosition = (String) myListView.getItemAtPosition(i);
 
-                    SavePreferences("jsonData", itemAtPosition);
-
                 }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-
-        }
-
-
-
-        protected void SavePreferences(String key, String value) {
-
-            SharedPreferences jsonData = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-            SharedPreferences.Editor editor = jsonData.edit();
-            editor.putString(key, value);
-            editor.commit();
-
-        }
-
-        protected void LoadPreferences(){
-
-            SharedPreferences loadData = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-            String dataSet = loadData.getString("jsonData", "none available");
-
-            items.add(dataSet);
+            }); */
 
         }
 

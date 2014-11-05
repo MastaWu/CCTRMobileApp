@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import java.util.ArrayList;
 
 
 /**
@@ -30,6 +33,11 @@ public class cctrct_favorites extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    sqliteDatabase database;
+    ListView listView;
+    ArrayList arrayList;
+
 
     /**
      * Use this factory method to create a new instance of
@@ -59,6 +67,13 @@ public class cctrct_favorites extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        database = new sqliteDatabase(getActivity());
+        database.getWritableDatabase();
+        //listView=(ListView)findViewById(R.id.listView);
+        arrayList=database.fetchData();
+        ArrayAdapter adapter=new ArrayAdapter(getActivity(),android.R.layout.activity_list_item,android.R.id.text1,arrayList);
+        listView.setAdapter(adapter);
     }
 
     @Override

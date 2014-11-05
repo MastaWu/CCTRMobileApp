@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, cctrct_search.OnFragmentInteractionListener, cctrct_search_results.OnFragmentInteractionListener,cctrct_favorites.OnFragmentInteractionListener, cctrct_contactus.OnFragmentInteractionListener, cctrct_recent.OnFragmentInteractionListener {
+public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, cctrct_search.OnFragmentInteractionListener, cctrct_search_results.OnFragmentInteractionListener,cctrct_favorites.OnFragmentInteractionListener, cctrct_contactus.OnFragmentInteractionListener, cctrct_recent.OnFragmentInteractionListener, favorites_list.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -69,7 +69,7 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                     .addToBackStack(null)
                     .commit(); break;
             case 2: fragmentManager.beginTransaction()
-                    .replace(R.id.container, cctrct_favorites.newInstance("test1", "test2"))
+                    .replace(R.id.container, favorites_list.newInstance("test1", "test2"))
                     .addToBackStack(null)
                     .commit(); break;
             case 3: fragmentManager.beginTransaction()
@@ -142,6 +142,11 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
     public void onFragmentInteraction(Uri uri) {
 
     }
+    @Override
+    public void onFragmentInteraction(String id){
+
+
+}
 
     /**
      * A placeholder fragment containing a simple view.
@@ -208,10 +213,10 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                 @Override
                 public void onClick(View view) {
 
-                    Fragment cctrct_favorite = new cctrct_favorites();
+                    Fragment favorites_list = new favorites_list();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
-                    transaction.replace(R.id.container, cctrct_favorite);
+                    transaction.replace(R.id.container, favorites_list);
                     transaction.addToBackStack(null);
 
                     transaction.commit();

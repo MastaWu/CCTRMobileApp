@@ -37,7 +37,6 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
     private static final int DATABASE_VERSION = 1;
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_FAVORITES;
 
-
     public sqliteDatabase(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -49,6 +48,7 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        sqLiteDatabase.execSQL(SQL_DELETE_ENTRIES);
         sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES);
 
 /*        DatabaseUtils.InsertHelper ih = new DatabaseUtils.InsertHelper(sqLiteDatabase, TABLE_FAVORITES);
@@ -86,7 +86,13 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
 
     }
 
-    public ArrayList fetchData(){
+
+    public void clearTable()   {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete(TABLE_FAVORITES, null,null);
+    }
+
+    public ArrayList fetchSearchData(){
 
         ArrayList<String> stringArrayList = new ArrayList<String>();
         String fetchdata = "select * from " + TABLE_FAVORITES;
@@ -98,12 +104,8 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
 
             do{
 
-                stringArrayList.add(cursor.getString(0) + "\n" + cursor.getString(1) + "\n" + cursor.getString(2) + "\n" + cursor.getString(3) + "\n" + cursor.getString(4) + "\n" + cursor.getString(5));
-                /*stringArrayList.add(cursor.getString(1));
-                stringArrayList.add(cursor.getString(2));
-                stringArrayList.add(cursor.getString(3));
-                stringArrayList.add(cursor.getString(4));
-                stringArrayList.add(cursor.getString(5));*/
+                stringArrayList.add("ID: " + cursor.getString(0) + "\nProtocol Number: " + cursor.getString(1) + "\nTitle: " + cursor.getString(2) + "\nShort Title: " + cursor.getString(3) + "\nStatus: " + cursor.getString(4) + "\nName: " + cursor.getString(5));
+
 
             } while(cursor.moveToNext());
 

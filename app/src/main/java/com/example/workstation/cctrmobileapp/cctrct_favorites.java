@@ -71,7 +71,7 @@ public class cctrct_favorites extends Fragment {
         database = new sqliteDatabase(getActivity());
         database.getWritableDatabase();
         //listView=(ListView)findViewById(R.id.listView);
-        arrayList=database.fetchData();
+        arrayList=database.fetchSearchData();
         ArrayAdapter adapter=new ArrayAdapter(getActivity(),android.R.layout.activity_list_item,android.R.id.text1,arrayList);
         listView.setAdapter(adapter);
     }

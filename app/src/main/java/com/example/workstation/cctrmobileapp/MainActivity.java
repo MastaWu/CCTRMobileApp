@@ -54,7 +54,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        database = new sqliteDatabase(this);
+        database = new sqliteDatabase(this, "cctr.db", null, 1);
+        database.clearTable();
         database.getWritableDatabase();
         new MyTasks().execute();
 
@@ -151,7 +152,7 @@ public class MainActivity extends ActionBarActivity {
 
             final ListView myListView = (ListView) findViewById(R.id.list);
 
-            arrayList = database.fetchData();
+            arrayList = database.fetchSearchData();
             myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
             ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, R.layout.custom_textview, arrayList);
             myListView.setAdapter(adapter);

@@ -98,12 +98,12 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
 
             do{
 
-                stringArrayList.add(cursor.getString(0));
-                stringArrayList.add(cursor.getString(1));
+                stringArrayList.add(cursor.getString(0) + "\n" + cursor.getString(1) + "\n" + cursor.getString(2) + "\n" + cursor.getString(3) + "\n" + cursor.getString(4) + "\n" + cursor.getString(5));
+                /*stringArrayList.add(cursor.getString(1));
                 stringArrayList.add(cursor.getString(2));
                 stringArrayList.add(cursor.getString(3));
                 stringArrayList.add(cursor.getString(4));
-                stringArrayList.add(cursor.getString(5));
+                stringArrayList.add(cursor.getString(5));*/
 
             } while(cursor.moveToNext());
 

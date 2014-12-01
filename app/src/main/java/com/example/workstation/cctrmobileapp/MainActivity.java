@@ -1,6 +1,7 @@
 package com.example.workstation.cctrmobileapp;
 
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
@@ -159,16 +160,20 @@ public class MainActivity extends ActionBarActivity {
 
 
             /* myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-            myListView.setAdapter(new ArrayAdapter(MainActivity.this, R.layout.custom_textview, items));
+            myListView.setAdapter(new ArrayAdapter(MainActivity.this, R.layout.custom_textview, items)); */
 
             myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                    String itemAtPosition = (String) myListView.getItemAtPosition(i);
+                Cursor cursor = (Cursor) myListView.getItemAtPosition(i);
+
+                String item = cursor.getString(cursor.getColumnIndexOrThrow("code"));
+
+                Toast.makeText(getApplicationContext(),item, Toast.LENGTH_SHORT).show();
 
                 }
-            }); */
+            });
 
         }
 

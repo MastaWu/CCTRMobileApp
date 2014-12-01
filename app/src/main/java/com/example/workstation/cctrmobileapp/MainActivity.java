@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         database = new sqliteDatabase(this, "cctr.db", null, 1);
-        database.clearTable();
+        database.clearSearchTable();
         database.getWritableDatabase();
         new MyTasks().execute();
 
@@ -132,7 +132,7 @@ public class MainActivity extends ActionBarActivity {
                     String status = p.getString(TAG_STATUS);
                     String name = p.getString(TAG_NAME);
 
-                    database.insertData(id, protocolNo, title, shortTitle, status, name);
+                    database.insertSearchData(id, protocolNo, title, shortTitle, status, name);
 
                     items.add("ID: " + id + "\nProtocol Number: " + protocolNo + "\nTitle: " + title + "\nShort Title: " + shortTitle + "\nStatus: " + status + "\nName: " + name);
 /*                    items.add("Protocol Number: " + protocolNo);

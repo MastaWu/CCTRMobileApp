@@ -17,7 +17,8 @@
         android:layout_below="@+id/cctrct_p1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
-        android:layout_gravity="center_horizontal|bottom" />
+        android:layout_gravity="center_horizontal|bottom"
+        android:background="@drawable/button_custom"/>
 
     <TextView
         android:layout_width="wrap_content"

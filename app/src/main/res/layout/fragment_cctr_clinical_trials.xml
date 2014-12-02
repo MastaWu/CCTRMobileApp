@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -12,8 +13,7 @@
         android:id="@+id/cctr_ct_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cctr_ct"
-        android:textSize="40sp"
+        android:textSize="10sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -25,7 +25,11 @@
         android:text="Search"
         android:layout_below="@+id/cctr_ct_home"
         android:layout_alignLeft="@+id/cctr_ct_home"
-        android:layout_alignStart="@+id/cctr_ct_home" />
+        android:layout_alignStart="@+id/cctr_ct_home"
+        android:layout_marginLeft="20dp"
+        android:background="#FFFFFF"
+        android:layout_marginTop="40dp"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -35,7 +39,9 @@
         android:layout_alignTop="@+id/cctr_search"
         android:layout_alignRight="@+id/cctr_ct_home"
         android:layout_alignEnd="@+id/cctr_ct_home"
-        android:text="Favorite"/>
+        android:text="Favorite"
+        android:layout_marginRight="20dp"
+        android:background="#FFFFFF"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -46,7 +52,8 @@
         android:layout_alignLeft="@+id/cctr_search"
         android:layout_alignStart="@+id/cctr_search"
         android:layout_marginTop="37dp"
-        android:text="Recent"/>
+        android:text="Recent"
+        android:background="#FFFFFF"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -56,16 +63,18 @@
         android:text="Contact Us"
         android:layout_alignTop="@+id/cctr_recent"
         android:layout_alignRight="@+id/cctr_ct_home"
-        android:layout_alignEnd="@+id/cctr_ct_home" />
+        android:layout_alignEnd="@+id/cctr_ct_home"
+        android:layout_marginRight="20dp"
+        android:background="#FFFFFF"/>
 
     <ImageView
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="250dp"
         android:layout_marginTop="20dp"
         android:layout_below="@id/cctr_contactus"
         android:scaleType="fitCenter"
-        android:src="@drawable/a"/>
+        android:src="@drawable/background_logo"/>
 
 
 </RelativeLayout>

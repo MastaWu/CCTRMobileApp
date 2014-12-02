@@ -45,7 +45,7 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
                     COLUMN_FAVORITES_NAME + TEXT_TYPE + " )";
     private static final String DATABASE_NAME = "cctr.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_FAVORITES;
+    private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_SEARCH;
 
     public sqliteDatabase(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -93,7 +93,7 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
         values.put(COLUMN_FAVORITES_STATUS, status);
         values.put(COLUMN_FAVORITES_NAME, name);
 
-        sqLiteDatabase.insert(TABLE_FAVORITES, null, values);
+        sqLiteDatabase.insert(TABLE_SEARCH, null, values);
 
     }
 
@@ -125,9 +125,54 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
         return stringArrayList;
     }
 
-    public void fillDatabase (String Json){
+    public ArrayList fetchFavoritesData(){
 
-        SQLiteDatabase databaseInstance = getReadableDatabase();
+        ArrayList<String> stringArrayList = new ArrayList<String>();
+        String fetchdata = "select * from " + TABLE_FAVORITES;
+
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+
+                stringArrayList.add("ID: " + cursor.getString(0) + "\nProtocol Number: " + cursor.getString(1) + "\nTitle: " + cursor.getString(2) + "\nShort Title: " + cursor.getString(3) + "\nStatus: " + cursor.getString(4) + "\nName: " + cursor.getString(5));
+
+
+            } while(cursor.moveToNext());
+
+        }
+
+        return stringArrayList;
+    }
+
+    public void insertFavoritesData(String id){
+
+        SQLiteDatabase sqLiteDatabaseWrite = this.getWritableDatabase();
+        SQLiteDatabase sqLiteDatabaseRead = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+
+        String fetchdata = "select * from " + TABLE_SEARCH + " WHERE " + _ID + " = " + id;
+
+        Cursor cursor = sqLiteDatabaseRead.rawQuery(fetchdata, null);
+
+        if(cursor.moveToFirst()){
+
+            do{
+
+                values.put(COLUMN_FAVORITES_ID, cursor.getString(0));
+                values.put(COLUMN_FAVORITES_PROTOCOLNO, cursor.getString(1));
+                values.put(COLUMN_FAVORITES_TITLE, cursor.getString(2));
+                values.put(COLUMN_FAVORITES_STITLE, cursor.getString(3));
+                values.put(COLUMN_FAVORITES_STATUS, cursor.getString(4));
+                values.put(COLUMN_FAVORITES_NAME, cursor.getString(5));
+
+            } while(cursor.moveToNext());
+
+        }
+
+        sqLiteDatabaseWrite.insert(TABLE_FAVORITES, null, values);
 
     }
 

@@ -84,7 +84,7 @@ public class favorites_list extends Fragment implements AbsListView.OnItemClickL
         database = new sqliteDatabase(getActivity());
         database.getWritableDatabase();
         //listView=(ListView)findViewById(R.id.listView);
-        arrayList=database.fetchSearchData();
+        arrayList = database.fetchFavoritesData();
 
     }
 

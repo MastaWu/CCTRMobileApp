@@ -50,6 +50,7 @@ public class MainActivity extends ActionBarActivity {
     static String json = "";
     sqliteDatabase database;
     ArrayList arrayList;
+    ArrayList<String> index = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,13 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         if (id == R.id.menu_favorite){
+
+            for(String s : index){
+
+                database.insertFavoritesData(s);
+
+            }
+
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -166,11 +174,26 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Cursor cursor = (Cursor) myListView.getItemAtPosition(i);
 
-                String item = cursor.getString(cursor.getColumnIndexOrThrow("code"));
+                    for(String s : index){
 
-                Toast.makeText(getApplicationContext(),item, Toast.LENGTH_SHORT).show();
+                        if(s.equals(""+i)){
+
+                            index.remove(""+i);
+                            Toast.makeText(getApplicationContext(), "Removed " + i, Toast.LENGTH_SHORT).show();
+
+
+                        } else {
+
+                            Toast.makeText(getApplicationContext(), "Added " + i, Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+
+                    index.add(""+i);
+
+                //Toast.makeText(getApplicationContext(), "" + i, Toast.LENGTH_SHORT).show();
 
                 }
             });

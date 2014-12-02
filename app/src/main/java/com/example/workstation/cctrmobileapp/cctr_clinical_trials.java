@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 
 public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, cctrct_search.OnFragmentInteractionListener, cctrct_search_results.OnFragmentInteractionListener,cctrct_favorites.OnFragmentInteractionListener, cctrct_contactus.OnFragmentInteractionListener, cctrct_recent.OnFragmentInteractionListener {
@@ -28,6 +29,8 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,6 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
         setFragment(PlaceholderFragment.newInstance(0));
-
     }
 
     public void setFragment(Fragment fragment) {

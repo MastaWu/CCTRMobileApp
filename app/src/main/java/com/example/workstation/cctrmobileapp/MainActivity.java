@@ -175,7 +175,7 @@ public class MainActivity extends ActionBarActivity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                    for(String s : index){
+                    /*for(String s : index){
 
                         if(s.equals(""+i)){
 
@@ -189,9 +189,10 @@ public class MainActivity extends ActionBarActivity {
 
                         }
 
-                    }
+                    }*/
 
                     index.add(""+i);
+                    Toast.makeText(getApplicationContext(), "Added " + i, Toast.LENGTH_SHORT).show();
 
                 //Toast.makeText(getApplicationContext(), "" + i, Toast.LENGTH_SHORT).show();
 

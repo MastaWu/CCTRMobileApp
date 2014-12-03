@@ -29,7 +29,7 @@ import java.util.ArrayList;
  * Created by Workstation on 11/3/2014.
  */
 
-    public class jsonParser {
+    public class JSONParser {
 
         ArrayList<String> items = new ArrayList<String>();
         static InputStream is = null;

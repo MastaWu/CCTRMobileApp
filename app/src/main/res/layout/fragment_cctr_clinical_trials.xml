@@ -6,59 +6,62 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#FFFFFF"
     tools:context="com.example.workstation.cctrmobileapp.cctr_clinical_trials$PlaceholderFragment">
-
-    <TextView
-        android:id="@+id/cctr_ct_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cctr_ct"
-        android:textSize="40sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cctr_search"
-        android:drawableTop="@drawable/search"
-        android:layout_below="@+id/cctr_ct_home"
-        android:layout_alignLeft="@+id/cctr_ct_home"
-        android:layout_alignStart="@+id/cctr_ct_home"
-        android:layout_marginTop="95dp"
-        android:text="Search"/>
+        android:drawableTop="@drawable/search_gold"
+        android:text="Search"
+        android:background="#FFFFFF"
+        android:layout_above="@+id/cctr_recent"
+        android:layout_alignLeft="@+id/cctr_ct_banner"
+        android:layout_alignStart="@+id/cctr_ct_banner"
+        android:layout_marginBottom="41dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cctr_favorites"
-        android:drawableTop="@drawable/favorites"
+        android:drawableTop="@drawable/favorite_gold"
+        android:text="Favorite"
+        android:background="#FFFFFF"
         android:layout_alignTop="@+id/cctr_search"
-        android:layout_alignRight="@+id/cctr_ct_home"
-        android:layout_alignEnd="@+id/cctr_ct_home"
-        android:text="Favorite"/>
+        android:layout_alignRight="@+id/cctr_ct_banner"
+        android:layout_alignEnd="@+id/cctr_ct_banner" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cctr_recent"
-        android:drawableTop="@drawable/recent"
-        android:layout_below="@+id/cctr_search"
+        android:drawableTop="@drawable/recent_gold"
+        android:text="Recent"
+        android:background="#FFFFFF"
+        android:layout_above="@+id/cctr_ct_banner"
         android:layout_alignLeft="@+id/cctr_search"
         android:layout_alignStart="@+id/cctr_search"
-        android:layout_marginTop="37dp"
-        android:text="Recent"/>
+        android:layout_marginBottom="119dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cctr_contactus"
-        android:drawableTop="@drawable/email"
+        android:drawableTop="@drawable/contact_gold"
         android:text="Contact Us"
+        android:background="#FFFFFF"
         android:layout_alignTop="@+id/cctr_recent"
-        android:layout_alignRight="@+id/cctr_ct_home"
-        android:layout_alignEnd="@+id/cctr_ct_home" />
+        android:layout_alignLeft="@+id/cctr_favorites"
+        android:layout_alignStart="@+id/cctr_favorites" />
 
+    <ImageView
+        android:id="@+id/cctr_ct_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/background_logo"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>

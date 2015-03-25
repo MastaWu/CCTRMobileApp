@@ -13,9 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cctr_search"
-        android:drawableTop="@drawable/search_gold"
-        android:text="Search"
-        android:background="#FFFFFF"
+        android:background="@drawable/search_selector"
         android:layout_above="@+id/cctr_recent"
         android:layout_alignLeft="@+id/cctr_ct_banner"
         android:layout_alignStart="@+id/cctr_ct_banner"
@@ -25,9 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cctr_favorites"
-        android:drawableTop="@drawable/favorite_gold"
-        android:text="Favorite"
-        android:background="#FFFFFF"
+        android:background="@drawable/favorite_selector"
         android:layout_alignTop="@+id/cctr_search"
         android:layout_alignRight="@+id/cctr_ct_banner"
         android:layout_alignEnd="@+id/cctr_ct_banner" />
@@ -36,21 +32,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cctr_recent"
-        android:drawableTop="@drawable/recent_gold"
-        android:text="Recent"
-        android:background="#FFFFFF"
+        android:background="@drawable/recent_selector"
         android:layout_above="@+id/cctr_ct_banner"
         android:layout_alignLeft="@+id/cctr_search"
         android:layout_alignStart="@+id/cctr_search"
-        android:layout_marginBottom="119dp" />
+        android:layout_marginBottom="119dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cctr_contactus"
-        android:drawableTop="@drawable/contact_gold"
-        android:text="Contact Us"
-        android:background="#FFFFFF"
+        android:background="@drawable/contact_selector"
         android:layout_alignTop="@+id/cctr_recent"
         android:layout_alignLeft="@+id/cctr_favorites"
         android:layout_alignStart="@+id/cctr_favorites" />
@@ -62,6 +54,62 @@
         android:src="@drawable/background_logo"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Search"
+        android:id="@+id/textView4"
+        android:layout_above="@+id/cctr_recent"
+        android:layout_below="@+id/cctr_favorites"
+        android:layout_alignLeft="@+id/cctr_recent"
+        android:layout_alignStart="@+id/cctr_recent"
+        android:layout_alignParentLeft="false"
+        android:layout_toLeftOf="@+id/cctr_contactus"
+        android:layout_alignRight="@+id/cctr_recent"
+        android:layout_alignEnd="@+id/cctr_recent"
+        android:layout_marginLeft="7dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Favorites"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/cctr_favorites"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/cctr_contactus"
+        android:layout_alignLeft="@+id/cctr_contactus"
+        android:layout_alignStart="@+id/cctr_contactus" />
+
+    <TextView
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Recent"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/cctr_contactus"
+        android:layout_alignLeft="@+id/cctr_recent"
+        android:layout_alignStart="@+id/cctr_recent"
+        android:layout_alignRight="@+id/cctr_recent"
+        android:layout_alignEnd="@+id/cctr_recent"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="7dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Contact"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/cctr_contactus"
+        android:layout_alignLeft="@+id/cctr_contactus"
+        android:layout_alignStart="@+id/cctr_contactus"
+        android:layout_alignRight="@id/cctr_contactus"
+        android:layout_alignEnd="@id/cctr_contactus"
+        android:layout_marginRight="0dp"/>
 
 
 </RelativeLayout>

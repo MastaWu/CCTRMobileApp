@@ -1,13 +1,17 @@
 package com.example.workstation.cctrmobileapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
+import java.net.URI;
 
 
 /**
@@ -41,6 +45,7 @@ public class cctrct_contactus extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static cctrct_contactus newInstance(String param1, String param2) {
+
         cctrct_contactus fragment = new cctrct_contactus();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -48,6 +53,7 @@ public class cctrct_contactus extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     public cctrct_contactus() {
         // Required empty public constructor
     }
@@ -55,17 +61,43 @@ public class cctrct_contactus extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact_us, container, false);
+
+        View contactView = inflater.inflate(R.layout.fragment_contact_us, container, false);
+
+        TextView phoneNumber = (TextView) contactView.findViewById(R.id.textView2);
+        TextView email = (TextView) contactView.findViewById(R.id.textView3);
+
+        phoneNumber.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:0123456789"));
+                startActivity(intent);
+            }
+        });
+
+        email.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                emailIntent.setType("vnd.android.cursor.item/email");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"abc@xyz.com"});
+                startActivity(Intent.createChooser(emailIntent, "Send mail using..."));
+            }
+        });
+        return contactView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

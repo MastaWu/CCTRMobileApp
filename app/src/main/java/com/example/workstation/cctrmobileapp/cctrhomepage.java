@@ -1,6 +1,7 @@
 package com.example.workstation.cctrmobileapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -35,7 +36,16 @@ public class cctrhomepage extends ActionBarActivity {
             }
         });
 
+        cctr_news.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://http://www.cctr.vcu.edu/news/index.html"));
+                startActivity(intent);
+
+            }
+        });
     }
 
 

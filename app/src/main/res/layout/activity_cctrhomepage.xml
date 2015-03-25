@@ -27,8 +27,7 @@
             android:id="@+id/cctr_news"
             android:text="@string/cctr_news"
             android:padding="10dp"
-            style="@style/Home_Button_Style"
-            android:background="@drawable/button_custom"
+            android:background="@drawable/button"
             />
 
         <Button
@@ -39,8 +38,7 @@
             android:text="@string/cctr_ct"
             android:padding="10dp"
             android:layout_marginTop="25dp"
-            style="@style/Home_Button_Style"
-            android:background="@drawable/button_custom"
+            android:background="@drawable/button"
             />
 
     </LinearLayout>

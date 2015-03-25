@@ -41,7 +41,7 @@ public class cctrhomepage extends ActionBarActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://http://www.cctr.vcu.edu/news/index.html"));
+                Uri.parse("http://www.cctr.vcu.edu/news/index.html"));
                 startActivity(intent);
 
             }

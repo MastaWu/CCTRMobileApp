@@ -83,7 +83,7 @@ public class cctrct_contactus extends Fragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:0123456789"));
+                intent.setData(Uri.parse("tel:8048288583"));
                 startActivity(intent);
             }
         });
@@ -93,7 +93,7 @@ public class cctrct_contactus extends Fragment {
                 Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
                 emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 emailIntent.setType("vnd.android.cursor.item/email");
-                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"abc@xyz.com"});
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"dfenster@vcu.edu"});
                 startActivity(Intent.createChooser(emailIntent, "Send mail using..."));
             }
         });

@@ -17,16 +17,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks, cctrct_search.OnFragmentInteractionListener, cctrct_search_results.OnFragmentInteractionListener,cctrct_favorites.OnFragmentInteractionListener, cctrct_contactus.OnFragmentInteractionListener, cctrct_recent.OnFragmentInteractionListener, favorites_list.OnFragmentInteractionListener {
+public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks,
+        cctrct_search.OnFragmentInteractionListener, cctrct_search_results.OnFragmentInteractionListener,
+        cctrct_favorites.OnFragmentInteractionListener, cctrct_contactus.OnFragmentInteractionListener,
+        cctrct_recent.OnFragmentInteractionListener, favorites_list.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
+    //Used to store the last screen title. For use in {@link #restoreActionBar()}.
     private CharSequence mTitle;
 
     @Override

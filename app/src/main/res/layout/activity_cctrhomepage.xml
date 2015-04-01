@@ -6,23 +6,24 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="#FFFFFF"
+    android:background="#C6C6C6"
     tools:context=".cctrhomepage">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/home_image"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/homepage"/>
+            android:scaleType="center"
+            android:src="@drawable/logo_gray"/>
 
         <Button
-            android:layout_width="fill_parent"
+            android:layout_width="300dp"
             android:layout_height="80dp"
             android:id="@+id/cctr_news"
             android:text="@string/cctr_news"
@@ -31,7 +32,7 @@
             />
 
         <Button
-            android:layout_width="fill_parent"
+            android:layout_width="300dp"
             android:layout_height="80dp"
             android:id="@+id/cctr_ct"
             android:layout_below="@id/cctr_news"

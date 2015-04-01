@@ -13,28 +13,38 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+
         <activity
             android:name=".cctrhomepage"
             android:label="@string/app_name" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+
         <activity
             android:name=".cctr_clinical_trials"
             android:label="@string/title_activity_cctr_clinical_trials" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
         </activity>
+
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
+
+
     </application>
 
 </manifest>

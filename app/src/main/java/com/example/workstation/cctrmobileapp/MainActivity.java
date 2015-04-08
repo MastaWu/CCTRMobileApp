@@ -200,7 +200,7 @@ public class MainActivity extends ActionBarActivity {
                     }*/
 
                     index.add(""+i);
-                    Toast.makeText(getApplicationContext(), "Added " + i, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Click Favorites to store: " + (i+1) + " item(s)", Toast.LENGTH_SHORT).show();
 
                 //Toast.makeText(getApplicationContext(), "" + i, Toast.LENGTH_SHORT).show();
 

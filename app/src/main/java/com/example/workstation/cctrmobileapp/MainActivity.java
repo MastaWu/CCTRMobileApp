@@ -1,5 +1,6 @@
 package com.example.workstation.cctrmobileapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -35,7 +36,7 @@ import java.util.ArrayList;
 import java.util.zip.GZIPInputStream;
 
 //"driver" class
-
+//refers to when you get the search results page
 public class MainActivity extends ActionBarActivity {
 
     ArrayList<String> items = new ArrayList<String>();
@@ -77,23 +78,21 @@ public class MainActivity extends ActionBarActivity {
     // automatically handle clicks on the Home/Up button, so long
     // as you specify a parent activity in AndroidManifest.xml.
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
 
+        //go back home
         if (id == R.id.action_home) {
-
-
-
+            Intent actionHome = new Intent(this,cctrhomepage.class);
+            startActivity(actionHome);
             return true;
         }
 
         //when you select "Favorites" from the top right after selecting the trials, it gets added
+        //the only time this works is when you are in the favorites menu
         if (id == R.id.menu_favorite){
-
             for(String s : index){
                 database.insertFavoritesData(s);
             }
-
             return true;
         }
 
@@ -151,11 +150,12 @@ public class MainActivity extends ActionBarActivity {
                     database.insertSearchData(id, protocolNo, title, shortTitle, status, name);
 
                     items.add("ID: " + id + "\nProtocol Number: " + protocolNo + "\nTitle: " + title + "\nShort Title: " + shortTitle + "\nStatus: " + status + "\nName: " + name);
-/*                    items.add("Protocol Number: " + protocolNo);
+                 /* items.add("Protocol Number: " + protocolNo);
                     items.add("Title: " + title);
                     items.add("Short Title: " + shortTitle);
                     items.add("Status: " + status);
-                    items.add("Name: " + name);*/
+                    items.add("Name: " + name);
+                    */
                 }
 
             } catch (JSONException e) {

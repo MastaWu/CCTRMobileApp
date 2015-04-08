@@ -1,5 +1,6 @@
 package com.example.workstation.cctrmobileapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -245,13 +246,14 @@ public class NavigationDrawerFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
 
         //what happens when you click "what is this"
         if (item.getItemId() == R.id.action_example) {

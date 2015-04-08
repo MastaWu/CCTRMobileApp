@@ -16,7 +16,7 @@
         android:layout_above="@+id/cctr_recent"
         android:layout_alignLeft="@+id/cctr_ct_banner"
         android:layout_alignStart="@+id/cctr_ct_banner"
-        android:layout_marginBottom="41dp" />
+        android:layout_marginBottom="60dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
         android:layout_above="@+id/cctr_ct_banner"
         android:layout_alignLeft="@+id/cctr_search"
         android:layout_alignStart="@+id/cctr_search"
-        android:layout_marginBottom="119dp"/>
+        android:layout_marginBottom="138dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -59,6 +59,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Search"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:id="@+id/textView4"
         android:layout_above="@+id/cctr_recent"
         android:layout_below="@+id/cctr_favorites"
@@ -75,6 +77,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Favorites"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:id="@+id/textView5"
         android:layout_below="@+id/cctr_favorites"
         android:layout_alignParentRight="true"
@@ -88,6 +92,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Recent"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:id="@+id/textView6"
         android:layout_below="@+id/cctr_contactus"
         android:layout_alignLeft="@+id/cctr_recent"
@@ -102,6 +108,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Contact"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:id="@+id/textView7"
         android:layout_below="@+id/cctr_contactus"
         android:layout_alignLeft="@+id/cctr_contactus"

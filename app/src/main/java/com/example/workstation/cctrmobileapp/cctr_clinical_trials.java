@@ -55,7 +55,7 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
                 .commit();
     }
 
-    @Override
+    //changes the fragment when you lick on a NavigationDrawerItem
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -85,6 +85,7 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
 
     }
 
+    //used to make sure title bar matches
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
@@ -102,7 +103,6 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
             case 5:
                 mTitle = getString(R.string.cctr_ct_contactus);
                 break;
-
         }
     }
 
@@ -110,7 +110,7 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+        actionBar.setTitle(R.string.drawer_name);
     }
 
 
@@ -128,14 +128,18 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
     }
 
     @Override
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+
+        if (id == R.id.action_home) {
+
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -146,8 +150,7 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
     @Override
     public void onFragmentInteraction(String id){
 
-
-}
+    }
 
      //A placeholder fragment containing a simple view.
     public static class PlaceholderFragment extends Fragment {

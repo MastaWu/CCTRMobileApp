@@ -34,6 +34,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.zip.GZIPInputStream;
 
+//"driver" class
 
 public class MainActivity extends ActionBarActivity {
 
@@ -72,26 +73,33 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+
+        if (id == R.id.action_home) {
+
+
+
             return true;
         }
+
+        //when you select "Favorites" from the top right after selecting the trials, it gets added
         if (id == R.id.menu_favorite){
 
             for(String s : index){
-
                 database.insertFavoritesData(s);
-
             }
 
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
+
 
     private class MyTasks extends AsyncTask<URL, Void, JSONObject> {
 

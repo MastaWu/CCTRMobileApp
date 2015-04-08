@@ -15,6 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:id="@+id/cctrct_search_submit"
         android:layout_marginBottom="90dp"
         android:layout_alignParentBottom="true"
@@ -26,6 +28,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Search Clinical Trials"
+        android:textStyle="bold"
         android:id="@+id/cctr_search_logo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -36,30 +39,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Keyword"
+        android:hint="Keyword"
         android:id="@+id/cctrct_search_keyword"
+        android:layout_gravity="left|center_vertical"
         android:layout_below="@+id/cctrct_search_dsite"
-        android:layout_alignRight="@+id/cctrct_search_submit"
-        android:layout_alignEnd="@+id/cctrct_search_submit"
-        android:layout_marginTop="26dp"
+        android:layout_alignLeft="@+id/cctrct_search_submit"
+        android:layout_alignStart="@+id/cctrct_search_submit"
+        android:layout_marginTop="40dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="Disease Site"
+        android:id="@+id/cctrct_search_dsite"
+        android:layout_below="@+id/cctr_search_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
         android:layout_gravity="left|center_vertical" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Disease Site"
-        android:id="@+id/cctrct_search_dsite"
-        android:layout_below="@+id/cctr_search_logo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:layout_gravity="right|center_vertical" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Protocol Number"
+        android:hint="Protocol Number"
         android:id="@+id/cctrct_search_pnum"
         android:layout_below="@+id/cctrct_search_keyword"
         android:layout_centerHorizontal="true"

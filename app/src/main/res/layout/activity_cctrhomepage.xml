@@ -27,6 +27,8 @@
             android:layout_height="80dp"
             android:id="@+id/cctr_news"
             android:text="@string/cctr_news"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:padding="10dp"
             android:background="@drawable/button"
             />
@@ -37,6 +39,8 @@
             android:id="@+id/cctr_ct"
             android:layout_below="@id/cctr_news"
             android:text="@string/cctr_ct"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:padding="10dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/button"

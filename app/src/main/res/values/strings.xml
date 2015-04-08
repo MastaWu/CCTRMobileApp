@@ -3,18 +3,19 @@
 
     <string name="app_name">CCTR Mobile App</string>
     <string name="title_activity_cctr_clinical_trials">cctr_clinical_trials</string>
-    <string name="drawer_name">Clinical Trials Home</string>
+    <string name="drawer_name">Menu</string>
 
     <string name="hello_world">Hello world!</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="action_example"> </string>
+    <string name="action_settings">Fix</string>
+    <string name="action_home">Title Page</string>
+    <string name="action_example">What is this</string>
 
     <string name="cctr_ct">Clinical Trials</string>
     <string name="cctr_news">CCTR News</string>
 
     <string name="cctr_ct_startscreen">Home</string>
-    <string name="cctr_ct_home">Clinical Trials Menu</string>
+    <string name="cctr_ct_home">Clinical Trials Home</string>
     <string name="cctr_ct_search">Search</string>
     <string name="cctr_ct_favorite">Favorites</string>
     <string name="cctr_ct_recent">Recent</string>

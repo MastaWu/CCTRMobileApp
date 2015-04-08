@@ -9,7 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-
+//when you first open the app, this page appears
+//corresponding layout page is activity_cctrhomepage.xml
 public class cctrhomepage extends ActionBarActivity {
 
     Button cctr_news;
@@ -48,7 +49,6 @@ public class cctrhomepage extends ActionBarActivity {
         });
     }
 
-    //do nothing below
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -57,14 +57,18 @@ public class cctrhomepage extends ActionBarActivity {
     }
 
     @Override
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+
+        if (id == R.id.action_home) {
+
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

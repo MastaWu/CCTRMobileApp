@@ -53,32 +53,22 @@ public class cctrct_search extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
+        // Inflate the layout for this fragment
         View searchView = inflater.inflate(R.layout.fragment_cctrct_search, container, false);
 
+
+
         Button cctrct_searchSubmitButton;
-
         cctrct_searchSubmitButton = (Button)searchView.findViewById(R.id.cctrct_search_submit);
-
-        cctrct_searchSubmitButton.setOnClickListener( new View.OnClickListener() {
+        cctrct_searchSubmitButton.setOnClickListener( new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
-
                 Intent openResults = new Intent(getActivity(), MainActivity.class);
-
                 startActivity(openResults);
-
-                /*Fragment cctrct_search_results = new cctrct_search_results();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-
-                transaction.replace(R.id.container, cctrct_search_results);
-                transaction.addToBackStack(null);
-
-                transaction.commit();*/
             }
         });
-
         return searchView;
     }
 

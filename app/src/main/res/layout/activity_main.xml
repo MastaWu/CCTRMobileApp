@@ -4,9 +4,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <!-- Main ListView
-         Always give id value as list(@android:id/list)
-    -->
+    <!--all data goes into list-->
     <ListView
         android:id="@+id/list"
         android:layout_width="fill_parent"

@@ -61,11 +61,15 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         database = new sqliteDatabase(this, "cctr.db", null, 1);
         database.clearSearchTable();
         database.getWritableDatabase();
+
         new MyTasks().execute();
     }
 
@@ -100,16 +104,22 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    //Async for background tasks
     private class MyTasks extends AsyncTask<URL, Void, JSONObject> {
 
         @Override
+        //background operations
         protected JSONObject doInBackground(URL... urls) {
 
             try {
-                DefaultHttpClient httpClient = new DefaultHttpClient();
-                HttpGet httpGet = new HttpGet(url);
-                HttpResponse httpResponse = httpClient.execute(httpGet);
 
+                //HTTP client that supports streaming uploads and downloads
+                DefaultHttpClient httpClient = new DefaultHttpClient();
+
+                //grabbing data from url
+                HttpGet httpGet = new HttpGet(url);
+
+                HttpResponse httpResponse = httpClient.execute(httpGet);
                 HttpEntity httpEntity = httpResponse.getEntity();
                 is = httpEntity.getContent();
 
@@ -122,13 +132,22 @@ public class MainActivity extends ActionBarActivity {
             }
 
             try {
+                //get the main content from URL
                 InputStream inputStream = is;
                 InputStreamReader reader = new InputStreamReader(inputStream);
+
+                //bufferedreader reads data from InputStream until the Buffer is full
                 BufferedReader in = new BufferedReader(reader);
+
+                //stores data
                 StringBuilder sb = new StringBuilder();
+
                 String line = null;
 
+                //read in the data from the buffer until nothing is left
                 while ((line = in.readLine()) != null) {
+
+                    //add data from the buffer to the StringBuilder
                     sb.append(line + "\n");
                 }
 
@@ -141,6 +160,7 @@ public class MainActivity extends ActionBarActivity {
 
             try {
 
+                //holds Key Value pairs from a JSON source
                 JSONArray people = new JSONArray(json);
 
                 for (int i = 0; i < people.length(); i++) {
@@ -155,7 +175,8 @@ public class MainActivity extends ActionBarActivity {
 
                     database.insertSearchData(id, protocolNo, title, shortTitle, status, name);
 
-                    items.add("ID: " + id
+                    items.add(
+                            "ID: " + id
                             + "\nProtocol Number: " + protocolNo
                             + "\nTitle: " + title
                             + "\nShort Title: " + shortTitle
@@ -170,14 +191,18 @@ public class MainActivity extends ActionBarActivity {
         }
 
         @SuppressWarnings({"unchecked", "rawtypes"})
+        //GUI manipulation
         public void onPostExecute(JSONObject json) {
 
+            //from the activity_main.xml
             final ListView myListView = (ListView) findViewById(R.id.list);
 
             arrayList = database.fetchSearchData();
 
             myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
             ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, R.layout.custom_textview, arrayList);
+
             myListView.setAdapter(adapter);
 
 

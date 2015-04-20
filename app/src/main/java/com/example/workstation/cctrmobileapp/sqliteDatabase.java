@@ -17,6 +17,7 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
 
     private static final String TABLE_FAVORITES = "favorites";
     private static final String TABLE_SEARCH = "search";
+
     private static final String COLUMN_FAVORITES_ID ="id";
     private static final String COLUMN_FAVORITES_PROTOCOLNO = "protocolNo";
     private static final String COLUMN_FAVORITES_TITLE = "title";
@@ -50,9 +51,11 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
     private static final int DATABASE_VERSION = 1;
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_SEARCH;
 
+    //context: provides access to application-specific resources and classes
     public sqliteDatabase(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
 
     public sqliteDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -65,25 +68,21 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
         sqLiteDatabase.execSQL(SQL_CREATE_SEARCH_ENTRIES);
         sqLiteDatabase.execSQL(SQL_CREATE_FAVORITE_ENTRIES);
 
-/*     DatabaseUtils.InsertHelper ih = new DatabaseUtils.InsertHelper(sqLiteDatabase, TABLE_FAVORITES);
-
-        final int favorites_id_ind = ih.getColumnIndex("id");
-        final int favorites_protocolNo_ind = ih.getColumnIndex("protocolNo");
-        final int favorites_title_ind = ih.getColumnIndex("title");
-        final int favorites_sTitle_ind = ih.getColumnIndex("shortTitle");
-        final int favorites_status_ind = ih.getColumnIndex("status");
-        final int favorites_name_ind = ih.getColumnIndex("name"); */
     }
 
     @Override
+    //calls onCreate to make an empty table
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
         sqLiteDatabase.execSQL(SQL_DELETE_ENTRIES);
         onCreate(sqLiteDatabase);
     }
 
-    public void insertSearchData(String id, String protocol, String title, String sTitle, String status, String name){
-
+    public void insertSearchData(String id, String protocol, String title, String sTitle, String status, String name)
+    {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+        //stores key value pairs. ContentValues data types is needed because the database requires
+        //its data type to be passed
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_FAVORITES_ID, id);
@@ -93,6 +92,7 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
         values.put(COLUMN_FAVORITES_STATUS, status);
         values.put(COLUMN_FAVORITES_NAME, name);
 
+        //inserts the data in the form of ContentValues to the table name TABLE_SEARCH
         sqLiteDatabase.insert(TABLE_SEARCH, null, values);
     }
 
@@ -106,19 +106,31 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
     public ArrayList fetchSearchData(){
 
         ArrayList<String> stringArrayList = new ArrayList<String>();
+
+        //gets data from inserted data into TABLE_SEARCH
         String fetchdata = "select * from " + TABLE_SEARCH;
 
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        //cursor provides the read and write access for the data returned from a database query
+        //rawQuery executes the query and returns the result as a Cursor
         Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
 
+        //move to the first row
         if(cursor.moveToFirst()){
             do{
-                stringArrayList.add("ID: " + cursor.getString(0)
+
+                //access the Cursor data by index that is in the same order as used
+                //when creating the table
+                stringArrayList.add(
+
+                        "ID: " + cursor.getString(0)
                         + "\nProtocol Number: " + cursor.getString(1)
                         + "\nTitle: " + cursor.getString(2)
                         + "\nShort Title: " + cursor.getString(3)
                         + "\nStatus: " + cursor.getString(4)
                         + "\nName: " + cursor.getString(5));
+
             } while(cursor.moveToNext());
         }
         return stringArrayList;

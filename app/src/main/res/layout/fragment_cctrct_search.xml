@@ -45,7 +45,8 @@
         android:layout_below="@+id/cctrct_search_dsite"
         android:layout_alignLeft="@+id/cctrct_search_submit"
         android:layout_alignStart="@+id/cctrct_search_submit"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="40dp"
+        android:inputType="text"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -56,7 +57,8 @@
         android:layout_below="@+id/cctr_search_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:layout_gravity="left|center_vertical" />
+        android:layout_gravity="left|center_vertical"
+        android:inputType="text"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -67,7 +69,8 @@
         android:layout_below="@+id/cctrct_search_keyword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="31dp"
-        android:layout_gravity="left|center_vertical" />
+        android:layout_gravity="left|center_vertical"
+        android:inputType="text"/>
 
     <ImageView
         android:id="@+id/cctr_search_banner"

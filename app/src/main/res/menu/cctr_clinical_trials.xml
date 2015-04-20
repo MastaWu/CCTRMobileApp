@@ -8,7 +8,7 @@
         app:showAsAction="withText|ifRoom" />
 
     <item android:id="@+id/menu_favorite"
-        android:title="@string/cctr_ct_favorite" />
+        android:title="@string/action_favorites" />
 
     <item android:id="@+id/action_home"
         android:title="@string/action_home"

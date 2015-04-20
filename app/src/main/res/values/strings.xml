@@ -9,7 +9,8 @@
 
     <string name="action_settings">Fix</string>
     <string name="action_home">Title Page</string>
-    <string name="action_example">What is this</string>
+    <string name="action_example">Clear Favorites(s)</string>
+    <string name="action_favorites">Add to Favorites</string>
 
     <string name="cctr_ct">Clinical Trials</string>
     <string name="cctr_news">CCTR News</string>

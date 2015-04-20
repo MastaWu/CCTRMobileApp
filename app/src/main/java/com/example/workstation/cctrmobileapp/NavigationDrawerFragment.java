@@ -255,9 +255,8 @@ public class NavigationDrawerFragment extends Fragment {
             return true;
         }
 
-        //what happens when you click "what is this"
         if (item.getItemId() == R.id.action_example) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Favorite(s) Cleared!.", Toast.LENGTH_SHORT).show();
             return true;
         }
 

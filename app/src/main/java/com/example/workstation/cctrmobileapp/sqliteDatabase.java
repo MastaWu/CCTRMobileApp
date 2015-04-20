@@ -103,11 +103,13 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
     }
 
 
+    //gets ALL contacts
     public ArrayList fetchSearchData(){
 
         ArrayList<String> stringArrayList = new ArrayList<String>();
 
         //gets data from inserted data into TABLE_SEARCH
+        //Select All query from the TABLE_SEARCH "WHERE"
         String fetchdata = "select * from " + TABLE_SEARCH;
 
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();

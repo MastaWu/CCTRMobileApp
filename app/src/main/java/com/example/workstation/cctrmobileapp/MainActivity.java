@@ -197,6 +197,7 @@ public class MainActivity extends ActionBarActivity {
             //from the activity_main.xml
             final ListView myListView = (ListView) findViewById(R.id.list);
 
+            //method from sqliteDatabase.java (DatabaseHandler)
             arrayList = database.fetchSearchData();
 
             myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -205,7 +206,7 @@ public class MainActivity extends ActionBarActivity {
 
             myListView.setAdapter(adapter);
 
-
+            //what happens when you click on a list view item....
             myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

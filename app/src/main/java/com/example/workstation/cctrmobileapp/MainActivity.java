@@ -41,16 +41,21 @@ public class MainActivity extends ActionBarActivity {
 
     ArrayList<String> items = new ArrayList<String>();
     static InputStream is = null;
+
     private static String url = "https://mobile-api.forteresearch.com/protocols";
+
     private static final String TAG_ID = "id";
     private static final String TAG_PROTOCOL = "protocolNo";
     private static final String TAG_TITLE = "title";
     private static final String TAG_SHORTTITLE = "shortTitle";
     private static final String TAG_STATUS = "status";
     private static final String TAG_NAME = "name";
+
     static JSONObject jObj = null;
     static String json = "";
+
     sqliteDatabase database;
+
     ArrayList arrayList;
     ArrayList<String> index = new ArrayList<String>();
 
@@ -62,7 +67,6 @@ public class MainActivity extends ActionBarActivity {
         database.clearSearchTable();
         database.getWritableDatabase();
         new MyTasks().execute();
-
     }
 
 
@@ -74,12 +78,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
+    // Handle action bar item clicks here. The action bar will automatically handle clicks on the Home/Up button, so long as you specify a parent activity in AndroidManifest.xml.
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         //go back home
         if (id == R.id.action_home) {
             Intent actionHome = new Intent(this,cctrhomepage.class);
@@ -87,15 +88,14 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
 
-        //when you select "Favorites" from the top right after selecting the trials, it gets added
-        //the only time this works is when you are in the favorites menu
+        //When you select "Favorites" from the top right after selecting the trials, it gets added.
+        //The only time this works is when you are in the favorites menu.
         if (id == R.id.menu_favorite){
             for(String s : index){
                 database.insertFavoritesData(s);
             }
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -104,6 +104,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         protected JSONObject doInBackground(URL... urls) {
+
             try {
                 DefaultHttpClient httpClient = new DefaultHttpClient();
                 HttpGet httpGet = new HttpGet(url);
@@ -119,6 +120,7 @@ public class MainActivity extends ActionBarActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             try {
                 InputStream inputStream = is;
                 InputStreamReader reader = new InputStreamReader(inputStream);
@@ -129,17 +131,21 @@ public class MainActivity extends ActionBarActivity {
                 while ((line = in.readLine()) != null) {
                     sb.append(line + "\n");
                 }
+
                 is.close();
                 json = sb.toString();
+
             } catch (Exception e) {
                 Log.e("Buffer Error", "Error converting result " + e.toString());
             }
+
             try {
 
                 JSONArray people = new JSONArray(json);
 
                 for (int i = 0; i < people.length(); i++) {
                     JSONObject p = people.getJSONObject(i);
+
                     String id = p.getString(TAG_ID);
                     String protocolNo = p.getString(TAG_PROTOCOL);
                     String title = p.getString(TAG_TITLE);
@@ -149,13 +155,12 @@ public class MainActivity extends ActionBarActivity {
 
                     database.insertSearchData(id, protocolNo, title, shortTitle, status, name);
 
-                    items.add("ID: " + id + "\nProtocol Number: " + protocolNo + "\nTitle: " + title + "\nShort Title: " + shortTitle + "\nStatus: " + status + "\nName: " + name);
-                 /* items.add("Protocol Number: " + protocolNo);
-                    items.add("Title: " + title);
-                    items.add("Short Title: " + shortTitle);
-                    items.add("Status: " + status);
-                    items.add("Name: " + name);
-                    */
+                    items.add("ID: " + id
+                            + "\nProtocol Number: " + protocolNo
+                            + "\nTitle: " + title
+                            + "\nShort Title: " + shortTitle
+                            + "\nStatus: " + status
+                            + "\nName: " + name);
                 }
 
             } catch (JSONException e) {
@@ -170,18 +175,15 @@ public class MainActivity extends ActionBarActivity {
             final ListView myListView = (ListView) findViewById(R.id.list);
 
             arrayList = database.fetchSearchData();
+
             myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
             ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, R.layout.custom_textview, arrayList);
             myListView.setAdapter(adapter);
 
 
-            /* myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-            myListView.setAdapter(new ArrayAdapter(MainActivity.this, R.layout.custom_textview, items)); */
-
             myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
 
                     /*for(String s : index){
 
@@ -190,20 +192,14 @@ public class MainActivity extends ActionBarActivity {
                             index.remove(""+i);
                             Toast.makeText(getApplicationContext(), "Removed " + i, Toast.LENGTH_SHORT).show();
 
-
                         } else {
 
                             Toast.makeText(getApplicationContext(), "Added " + i, Toast.LENGTH_SHORT).show();
-
                         }
-
                     }*/
 
                     index.add(""+i);
                     Toast.makeText(getApplicationContext(), "Click Favorites to store: " + (i+1) + " item(s)", Toast.LENGTH_SHORT).show();
-
-                //Toast.makeText(getApplicationContext(), "" + i, Toast.LENGTH_SHORT).show();
-
                 }
             });
 

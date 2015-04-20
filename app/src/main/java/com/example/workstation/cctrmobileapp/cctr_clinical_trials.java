@@ -18,14 +18,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class cctr_clinical_trials extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks,
+public class cctr_clinical_trials
+       extends ActionBarActivity
+       implements NavigationDrawerFragment.NavigationDrawerCallbacks,
         cctrct_search.OnFragmentInteractionListener, cctrct_search_results.OnFragmentInteractionListener,
         cctrct_favorites.OnFragmentInteractionListener, cctrct_contactus.OnFragmentInteractionListener,
         cctrct_recent.OnFragmentInteractionListener, favorites_list.OnFragmentInteractionListener {
 
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
+    //Fragment managing the behaviors, interactions and presentation of the navigation drawer.
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
     //Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -175,8 +175,8 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_cctr_clinical_trials, container, false);
 
+            View rootView = inflater.inflate(R.layout.fragment_cctr_clinical_trials, container, false);
 
             Button cctrct_searchButton;
 
@@ -260,7 +260,6 @@ public class cctr_clinical_trials extends ActionBarActivity implements Navigatio
             ((cctr_clinical_trials) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
-
 
 
     }

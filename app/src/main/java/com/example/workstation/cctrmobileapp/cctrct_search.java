@@ -12,15 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link cctrct_search.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link cctrct_search#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
+
+ //A simple {@link Fragment} subclass. Activities that contain this fragment must implement the {@link cctrct_search.OnFragmentInteractionListener} interface to handle interaction events. Use the {@link cctrct_search#newInstance} factory method to create an instance of this fragment.
 public class cctrct_search extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,14 +26,8 @@ public class cctrct_search extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment cctrct_search.
-     */
+
+     //Use this factory method to create a new instance of this fragment using the provided parameters. @param param1 Parameter 1. @param param2 Parameter 2. @return A new instance of fragment cctrct_search.
     // TODO: Rename and change types and number of parameters
     public static cctrct_search newInstance(String param1, String param2) {
         cctrct_search fragment = new cctrct_search();

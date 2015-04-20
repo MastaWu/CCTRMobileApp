@@ -25,6 +25,7 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
     private static final String COLUMN_FAVORITES_NAME = "name";
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP =", ";
+
     private static final String SQL_CREATE_FAVORITE_ENTRIES =
             "CREATE TABLE " + TABLE_FAVORITES + " (" +
             BaseColumns._ID + " INTEGER PRIMARY KEY," +
@@ -34,15 +35,17 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
             COLUMN_FAVORITES_STITLE + TEXT_TYPE + COMMA_SEP +
             COLUMN_FAVORITES_STATUS + TEXT_TYPE + COMMA_SEP +
             COLUMN_FAVORITES_NAME + TEXT_TYPE + " )";
+
     private static final String SQL_CREATE_SEARCH_ENTRIES =
             "CREATE TABLE " + TABLE_SEARCH + " (" +
-                    BaseColumns._ID + " INTEGER PRIMARY KEY," +
-                    COLUMN_FAVORITES_ID + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_FAVORITES_PROTOCOLNO + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_FAVORITES_TITLE + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_FAVORITES_STITLE + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_FAVORITES_STATUS + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_FAVORITES_NAME + TEXT_TYPE + " )";
+            BaseColumns._ID + " INTEGER PRIMARY KEY," +
+            COLUMN_FAVORITES_ID + TEXT_TYPE + COMMA_SEP +
+            COLUMN_FAVORITES_PROTOCOLNO + TEXT_TYPE + COMMA_SEP +
+            COLUMN_FAVORITES_TITLE + TEXT_TYPE + COMMA_SEP +
+            COLUMN_FAVORITES_STITLE + TEXT_TYPE + COMMA_SEP +
+            COLUMN_FAVORITES_STATUS + TEXT_TYPE + COMMA_SEP +
+            COLUMN_FAVORITES_NAME + TEXT_TYPE + " )";
+
     private static final String DATABASE_NAME = "cctr.db";
     private static final int DATABASE_VERSION = 1;
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_SEARCH;
@@ -62,7 +65,7 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
         sqLiteDatabase.execSQL(SQL_CREATE_SEARCH_ENTRIES);
         sqLiteDatabase.execSQL(SQL_CREATE_FAVORITE_ENTRIES);
 
-/*        DatabaseUtils.InsertHelper ih = new DatabaseUtils.InsertHelper(sqLiteDatabase, TABLE_FAVORITES);
+/*     DatabaseUtils.InsertHelper ih = new DatabaseUtils.InsertHelper(sqLiteDatabase, TABLE_FAVORITES);
 
         final int favorites_id_ind = ih.getColumnIndex("id");
         final int favorites_protocolNo_ind = ih.getColumnIndex("protocolNo");
@@ -70,15 +73,12 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
         final int favorites_sTitle_ind = ih.getColumnIndex("shortTitle");
         final int favorites_status_ind = ih.getColumnIndex("status");
         final int favorites_name_ind = ih.getColumnIndex("name"); */
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
-
         sqLiteDatabase.execSQL(SQL_DELETE_ENTRIES);
         onCreate(sqLiteDatabase);
-
     }
 
     public void insertSearchData(String id, String protocol, String title, String sTitle, String status, String name){
@@ -94,7 +94,6 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
         values.put(COLUMN_FAVORITES_NAME, name);
 
         sqLiteDatabase.insert(TABLE_SEARCH, null, values);
-
     }
 
 
@@ -102,6 +101,7 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         sqLiteDatabase.delete(TABLE_SEARCH, null,null);
     }
+
 
     public ArrayList fetchSearchData(){
 
@@ -112,18 +112,18 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
         Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
 
         if(cursor.moveToFirst()){
-
             do{
-
-                stringArrayList.add("ID: " + cursor.getString(0) + "\nProtocol Number: " + cursor.getString(1) + "\nTitle: " + cursor.getString(2) + "\nShort Title: " + cursor.getString(3) + "\nStatus: " + cursor.getString(4) + "\nName: " + cursor.getString(5));
-
-
+                stringArrayList.add("ID: " + cursor.getString(0)
+                        + "\nProtocol Number: " + cursor.getString(1)
+                        + "\nTitle: " + cursor.getString(2)
+                        + "\nShort Title: " + cursor.getString(3)
+                        + "\nStatus: " + cursor.getString(4)
+                        + "\nName: " + cursor.getString(5));
             } while(cursor.moveToNext());
-
         }
-
         return stringArrayList;
     }
+
 
     public ArrayList fetchFavoritesData(){
 
@@ -134,16 +134,15 @@ public class sqliteDatabase extends SQLiteOpenHelper implements BaseColumns{
         Cursor cursor = sqLiteDatabase.rawQuery(fetchdata, null);
 
         if(cursor.moveToFirst()){
-
             do{
-
-                stringArrayList.add("ID: " + cursor.getString(0) + "\nProtocol Number: " + cursor.getString(1) + "\nTitle: " + cursor.getString(2) + "\nShort Title: " + cursor.getString(3) + "\nStatus: " + cursor.getString(4) + "\nName: " + cursor.getString(5));
-
-
+                stringArrayList.add("ID: " + cursor.getString(0)
+                        + "\nProtocol Number: " + cursor.getString(1)
+                        + "\nTitle: " + cursor.getString(2)
+                        + "\nShort Title: " + cursor.getString(3)
+                        + "\nStatus: " + cursor.getString(4)
+                        + "\nName: " + cursor.getString(5));
             } while(cursor.moveToNext());
-
         }
-
         return stringArrayList;
     }
 

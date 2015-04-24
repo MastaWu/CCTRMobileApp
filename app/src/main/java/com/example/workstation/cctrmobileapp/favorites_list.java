@@ -90,7 +90,8 @@ public class favorites_list extends Fragment implements AbsListView.OnItemClickL
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.fragment_item, container, false);
 
         // Set the adapter
@@ -102,6 +103,7 @@ public class favorites_list extends Fragment implements AbsListView.OnItemClickL
         mListView = (AbsListView) view.findViewById(android.R.id.list);
 
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.custom_textview, arrayList);
+
         ((AdapterView<ListAdapter>) mListView).setAdapter(adapter);
         //myListView.setAdapter(adapter);
 
@@ -131,19 +133,20 @@ public class favorites_list extends Fragment implements AbsListView.OnItemClickL
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         if (null != mListener) {
+
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
             mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
         }
     }
 
-    /**
-     * The default content for this Fragment has a TextView that is shown when
-     * the list is empty. If you would like to change the text, call this method
-     * to supply the text it should use.
-     */
+
+    //The default content for this Fragment has a TextView that is shown when the list is empty.
+    // If you would like to change the text, call this method to supply the text it should use.
     public void setEmptyText(CharSequence emptyText) {
+
         View emptyView = mListView.getEmptyView();
 
         if (emptyView instanceof TextView) {

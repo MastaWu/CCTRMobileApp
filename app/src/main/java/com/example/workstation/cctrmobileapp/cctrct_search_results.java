@@ -13,15 +13,7 @@ import android.widget.Button;
 import org.json.JSONObject;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link cctrct_search_results.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link cctrct_search_results#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
+
 public class cctrct_search_results extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,14 +26,6 @@ public class cctrct_search_results extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment cctrct_search_results.
-     */
     // TODO: Rename and change types and number of parameters
     public static cctrct_search_results newInstance(String param1, String param2) {
 
@@ -55,10 +39,9 @@ public class cctrct_search_results extends Fragment {
         fragment.setArguments(args);
 
         return fragment;
-
     }
+
     public cctrct_search_results() {
-        // Required empty public constructor
     }
 
     @Override
@@ -73,7 +56,6 @@ public class cctrct_search_results extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View searchResultView = inflater.inflate(R.layout.fragment_cctrct_search_results, container, false);
 
@@ -90,8 +72,11 @@ public class cctrct_search_results extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+
         try {
+
             mListener = (OnFragmentInteractionListener) activity;
+
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -104,16 +89,6 @@ public class cctrct_search_results extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);

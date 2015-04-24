@@ -42,7 +42,8 @@ public class MainActivity extends ActionBarActivity {
     ArrayList<String> items = new ArrayList<String>();
     static InputStream is = null;
 
-    private static String url = "https://mobile-api.forteresearch.com/protocols";
+    //private static String url = "https://mobile-api.forteresearch.com/protocols";
+    private static String url = "http://oncoretest.mcvh-vcu.edu/protocols";
 
     private static final String TAG_ID = "id";
     private static final String TAG_PROTOCOL = "protocolNo";
@@ -57,6 +58,7 @@ public class MainActivity extends ActionBarActivity {
     sqliteDatabase database;
 
     ArrayList arrayList;
+
     ArrayList<String> index = new ArrayList<String>();
 
     @Override
@@ -69,6 +71,7 @@ public class MainActivity extends ActionBarActivity {
         database = new sqliteDatabase(this, "cctr.db", null, 1);
         database.clearSearchTable();
         database.getWritableDatabase();
+
 
         new MyTasks().execute();
     }
@@ -111,16 +114,16 @@ public class MainActivity extends ActionBarActivity {
         //background operations
         protected JSONObject doInBackground(URL... urls) {
 
+            //conntects to server
             try {
-
                 //HTTP client that supports streaming uploads and downloads
                 DefaultHttpClient httpClient = new DefaultHttpClient();
-
                 //grabbing data from url
                 HttpGet httpGet = new HttpGet(url);
-
                 HttpResponse httpResponse = httpClient.execute(httpGet);
                 HttpEntity httpEntity = httpResponse.getEntity();
+
+                //declared  "static InputStream is = null;" from line 40
                 is = httpEntity.getContent();
 
             } catch (UnsupportedEncodingException e) {
@@ -132,26 +135,24 @@ public class MainActivity extends ActionBarActivity {
             }
 
             try {
-                //get the main content from URL
+                //right now the stream is just being purely read until full
                 InputStream inputStream = is;
                 InputStreamReader reader = new InputStreamReader(inputStream);
-
-                //bufferedreader reads data from InputStream until the Buffer is full
                 BufferedReader in = new BufferedReader(reader);
 
-                //stores data
+                //created sb to store incoming strings
                 StringBuilder sb = new StringBuilder();
-
                 String line = null;
 
-                //read in the data from the buffer until nothing is left
+                //read in the data from the buffer until nothing is left/null
                 while ((line = in.readLine()) != null) {
-
                     //add data from the buffer to the StringBuilder
                     sb.append(line + "\n");
                 }
-
                 is.close();
+
+                //declared  "static String json = "";" from line 50ish
+                //stores all the strings we've currently read into that string object that cant be changed (static)
                 json = sb.toString();
 
             } catch (Exception e) {
@@ -160,12 +161,15 @@ public class MainActivity extends ActionBarActivity {
 
             try {
 
-                //holds Key Value pairs from a JSON source
+                //a JSONArray is created to store the inputted strings of object "json"
+                //now ready for manipulation
                 JSONArray people = new JSONArray(json);
 
                 for (int i = 0; i < people.length(); i++) {
+
                     JSONObject p = people.getJSONObject(i);
 
+                    //the new Strings are passed to the TAGS specified
                     String id = p.getString(TAG_ID);
                     String protocolNo = p.getString(TAG_PROTOCOL);
                     String title = p.getString(TAG_TITLE);
@@ -173,8 +177,12 @@ public class MainActivity extends ActionBarActivity {
                     String status = p.getString(TAG_STATUS);
                     String name = p.getString(TAG_NAME);
 
+                    //declared "sqliteDatabase database;" from line 58
+                    //calls it's insertSearchData method from the sqLiteDatabase.java file
                     database.insertSearchData(id, protocolNo, title, shortTitle, status, name);
 
+                    //items declared as an ArrayList type. .add is an ArrayList function
+                    //these items are now added an ArrayList "items"
                     items.add(
                             "ID: " + id
                             + "\nProtocol Number: " + protocolNo
@@ -187,45 +195,50 @@ public class MainActivity extends ActionBarActivity {
             } catch (JSONException e) {
                 Log.e("JSON Parser", "Error parsing data " + e.toString());
             }
+
+            //declared as "static JSONObject jObj = null;" from line 54
             return jObj;
         }
 
         @SuppressWarnings({"unchecked", "rawtypes"})
-        //GUI manipulation
         public void onPostExecute(JSONObject json) {
+
+            long baseColumn = 1;
 
             //from the activity_main.xml
             final ListView myListView = (ListView) findViewById(R.id.list);
 
             //method from sqliteDatabase.java (DatabaseHandler)
+            //we need to get value of the text edited "protocol"
+
+            //arrayList is defined as an ArrayList, method call from database
             arrayList = database.fetchSearchData();
+
 
             myListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
+            //ArrayAdapter displays the search results, with the newly filled arrayList
             ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, R.layout.custom_textview, arrayList);
 
             myListView.setAdapter(adapter);
 
-            //what happens when you click on a list view item....
+            //Toast.makeText(getApplicationContext(), "you entered" + (protocolNumber), Toast.LENGTH_SHORT).show();
+
             myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                     /*for(String s : index){
-
                         if(s.equals(""+i)){
-
                             index.remove(""+i);
                             Toast.makeText(getApplicationContext(), "Removed " + i, Toast.LENGTH_SHORT).show();
-
                         } else {
-
                             Toast.makeText(getApplicationContext(), "Added " + i, Toast.LENGTH_SHORT).show();
                         }
                     }*/
 
                     index.add(""+i);
-                    Toast.makeText(getApplicationContext(), "Click Favorites to store: " + (i+1) + " item(s)", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Click Favorites to store: " + (l) + " item(s)", Toast.LENGTH_SHORT).show();
                 }
             });
 

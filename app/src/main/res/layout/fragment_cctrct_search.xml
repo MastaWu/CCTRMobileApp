@@ -23,6 +23,17 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/button"/>
 
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/help"
+        android:background="@drawable/ic_action_help"
+        android:layout_alignTop="@+id/cctrct_search_submit"
+        android:layout_alignRight="@+id/cctr_search_logo"
+        android:layout_alignEnd="@+id/cctr_search_logo"
+        android:layout_toRightOf="@+id/cctrct_search_submit"
+        android:layout_toEndOf="@+id/cctrct_search_submit" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,35 +47,39 @@
         android:layout_gravity="center_horizontal|top" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:hint="Keyword"
+        android:hint="Protocol #"
         android:id="@+id/cctrct_search_keyword"
+        android:ellipsize="start"
         android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="41dp"
+        android:inputType="text"
         android:layout_below="@+id/cctrct_search_dsite"
-        android:layout_alignLeft="@+id/cctrct_search_submit"
-        android:layout_alignStart="@+id/cctrct_search_submit"
-        android:layout_marginTop="40dp"
-        android:inputType="text"/>
+        android:layout_alignLeft="@+id/cctrct_search_pnum"
+        android:layout_alignStart="@+id/cctrct_search_pnum" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
+        android:ellipsize="start"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:hint="Disease Site"
+        android:hint="Title"
         android:id="@+id/cctrct_search_dsite"
         android:layout_below="@+id/cctr_search_logo"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
         android:layout_gravity="left|center_vertical"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:layout_alignLeft="@+id/cctrct_search_keyword"
+        android:layout_alignStart="@+id/cctrct_search_keyword" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
+        android:ellipsize="start"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:hint="Protocol Number"
+        android:hint="Short Title"
         android:id="@+id/cctrct_search_pnum"
         android:layout_below="@+id/cctrct_search_keyword"
         android:layout_centerHorizontal="true"

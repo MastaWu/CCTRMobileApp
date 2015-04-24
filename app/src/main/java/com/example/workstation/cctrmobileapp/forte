@@ -1,8 +1,11 @@
-[{"id":4023,
-"protocolNo":"000601",
-"title":"prostate lab study","shortTitle":"prostate lab study",
-"status":"Open",
-"name":"000601"},
+                                            = ID: 1
+"id":4023,                                  = Protocol Number: 4023
+"protocolNo":"000601",                      = Title: 000601
+"title":"prostate lab study",               = Short Title: prostate lab study
+"shortTitle":"prostate lab study",          = Status: prostate lab study
+"status":"Open",                            = Name: Open
+"name":"000601"                             = doesn't get displayed },
+
 
 {"id":2203,
 "protocolNo":"05813",
